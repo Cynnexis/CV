@@ -16,6 +16,7 @@
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
 \newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
 \newfontfamily{\gothicb}{GOTHICB}[Extension=.ttf]
+\newfontfamily\DejaSans{DejaVu Sans}
 
 \setmainfont{Calibri}
 \setsansfont{Calibri}
@@ -37,7 +38,7 @@
 \definecolor{margin-background-color}{HTML}{EEEEEE} % #EEEEEE
 
 % Change the thickness of the horizontal bar
-\def\hrulefill{\leavevmode\leaders\hrule height 1.2pt\hfill\kern\z@}
+\def\hrulefill{\leavevmode\leaders\hrule height 1.5pt\hfill\kern\z@}
 
 % Line spacing, see https://www.overleaf.com/learn/latex/Paragraph_formatting
 \setlength{\parindent}{0cm}
@@ -50,10 +51,14 @@
 \renewcommand{\labelitemii}{\textcolor{h2-color}{\textbullet}}
 \renewcommand{\labelitemiii}{\textcolor{h3-color}{\textbullet}}
 
-\newcommand{\firstcolumnwidth}{0.25\textwidth}
-\newcommand{\secondcolumnwidth}{0.70\textwidth}
+\newcommand{\firstcolumnwidth}{0.30\textwidth}
+\newcommand{\secondcolumnwidth}{0.65\textwidth}
 \newcommand{\iconcolumnwidth}{0.1\textwidth}
 \newcommand{\textcolumnwidth}{0.9\textwidth}
+\newcommand{\firsticoncolumnwidth}{0.1\textwidth}
+\newcommand{\firsttextcolumnwidth}{0.8\textwidth}%.9
+\newcommand{\secondiconcolumnwidth}{0.05\textwidth}
+\newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
@@ -64,25 +69,40 @@
 		\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1
 	\end{adjustwidth}
 }
-\newcommand{\jump}{\vspace{0.4\baselineskip}}
-\newcommand{\bigjump}{\vspace{0.6\baselineskip}}
-\newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=15pt]{#1}}}
+\newcommand{\jump}[1][0.4]{\vspace{#1\baselineskip}}
+\newcommand{\bigjump}{\jump[1.5]}
+\newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
+\newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
-\newcommand{\group}[2]{
-	\noindent\icon{#1} {\fontsize{12}{\baselinestretch}\selectfont\textbf{#2}}\lineunder
-}
+\newcommand{\grouptitle}[1]{\noindent{\fontsize{12}{\baselinestretch}\selectfont #1}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\normalsize\textbf{#1}}
+		{\fontsize{11}{\baselinestretch}\selectfont\textbf{#1}}
 	\end{adjustwidth}
 }
 \newcommand{\entrydescription}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\normalsize #1}
+		{\fontsize{10}{\baselinestretch}\selectfont #1}
 	\end{adjustwidth}
 }
 \newcommand{\entrydate}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\small\textcolor{h3-color}{#1}}
+		{\fontsize{10}{\baselinestretch}\selectfont\textcolor{h3-color}{#1}}
 	\end{adjustwidth}
 }
+
+% TODO: Check minipage options
+\newcommand{\window}[5][0cm]{%
+	\begin{minipage}[t]{#4}%
+		#2%
+	\end{minipage}%
+	\hspace{#1}%
+	\begin{minipage}[t]{#5}
+		#3
+	\end{minipage}%
+}
+\newcommand{\windowicon}[5][0cm]{\window[#1]{\icon{#2}}{#3}{#4}{#5}}
+\newcommand{\firstwindow}[3][0cm]{\window[#1]{#2}{#3}{\firsticoncolumnwidth}{\firsttextcolumnwidth}}
+\newcommand{\firstwindowicon}[3][0cm]{\window[#1]{\sideicon{#2}}{#3}{\firsticoncolumnwidth}{\firsttextcolumnwidth}}
+\newcommand{\secondwindow}[3][0.2cm]{\window[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
+\newcommand{\secondwindowicon}[3][0.2cm]{\windowicon[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
