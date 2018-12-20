@@ -1,7 +1,7 @@
+% LaTeX engine: XeLaTeX
 \documentclass{resume}
 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\usepackage{fontspec}
 \usepackage[english]{babel}
 \usepackage{verbatim}
 \usepackage{gensymb}
@@ -42,61 +42,61 @@
 		\bigjump
 		\group{person}{Contact}
 		
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{location}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{location}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{Address}
 			\entrydescription{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
 		\end{minipage}
 		
 		\jump
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{phone}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{phone}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{Phone Number}
 			\entrydescription{\link{tel:+33751648450}{+33 7 51 64 84 50}}
 		\end{minipage}
 		
 		\jump
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{email}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{email}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{Email}
 			\entrydescription{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
 		\end{minipage}
 		
 		\jump
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{linkedin}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{linkedin}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{LinkedIn}
 			\entrydescription{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
 		\end{minipage}
 		
 		\jump
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{skype}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{skype}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{Skype}
 			\entrydescription{valentin.berger}
 		\end{minipage}
 		
 		\jump
-		\begin{minipage}[t]{0.1\textwidth}
-			\sideicon{github}
+		\begin{minipage}[t]{\iconcolumnwidth}
+			\icon{github}
 		\end{minipage}%
 		\hfill
-		\begin{minipage}[t]{0.9\textwidth}
+		\begin{minipage}[t]{\textcolumnwidth}
 			\entrytitle{GitHub}
 			\entrydescription{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
 		\end{minipage}
@@ -104,7 +104,7 @@
 		\bigjump
 		\group{language}{Languages}
 		
-		\begin{adjustwidth}{0.1\textwidth}{0cm}
+		\begin{adjustwidth}{\iconcolumnwidth}{0cm}
 			\entrytitle{French}
 			\entrydescription{Native language}
 			

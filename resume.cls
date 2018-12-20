@@ -1,21 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{resume}[2011/03/26 My custom CV class]
-\LoadClass{article}
+\LoadClass[a4paper,11pt]{article}
 
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_1)
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_2)
 
-\PassOptionsToPackage{T1}{fontenc}
 \PassOptionsToPackage{table}{xcolor}
-\RequirePackage{fontenc}
+\usepackage{fontspec}
 \RequirePackage{titlesec}
 \RequirePackage{xcolor}
 \RequirePackage{changepage}
 \RequirePackage{float}
 \RequirePackage{graphicx}
 
-% Change font (see all fonts at https://www.overleaf.com/learn/latex/Font_typefaces)
-\usepackage{lmodern}
+% Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
+\newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
+\newfontfamily{\gothicb}{GOTHICB}[Extension=.ttf]
+
+\setmainfont{Calibri}
+\setsansfont{Calibri}
+%\setmonofont{Consola}
 
 % Switch all fonts to sans serif by default (except math expressions)
 \renewcommand{\familydefault}{\sfdefault}
@@ -38,7 +42,7 @@
 % Line spacing, see https://www.overleaf.com/learn/latex/Paragraph_formatting
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0cm}
-\renewcommand{\baselinestretch}{0.8}
+\renewcommand{\baselinestretch}{0.7}
 \renewcommand{\linespread}{0}
 
 % Change color of bullet points
@@ -48,23 +52,24 @@
 
 \newcommand{\firstcolumnwidth}{0.25\textwidth}
 \newcommand{\secondcolumnwidth}{0.70\textwidth}
+\newcommand{\iconcolumnwidth}{0.1\textwidth}
+\newcommand{\textcolumnwidth}{0.9\textwidth}
 \newcommand{\leftspace}{0.2cm}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
 
-\newcommand{\myname}{\hspace{4cm}\fontfamily{qag}\selectfont\huge\color{primary-text-color}\textbf{Valentin Berger}}
+\newcommand{\myname}{\hspace{4cm}\gothicb\fontsize{18}{0.2}\selectfont\color{primary-text-color}\textbf{Valentin Berger}}
 \newcommand{\mytitle}[1]{
 	\begin{adjustwidth}{4cm}{0cm}
-		\color{primary-text-color}\fontfamily{qag}\selectfont\huge #1
+		\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1
 	\end{adjustwidth}
 }
 \newcommand{\jump}{\vspace{0.4\baselineskip}}
 \newcommand{\bigjump}{\vspace{0.6\baselineskip}}
 \newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=15pt]{#1}}}
-\newcommand{\sideicon}[1]{\centering\raisebox{-0.5\height}{\includegraphics[height=15pt]{#1}}}
 \newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
 \newcommand{\group}[2]{
-	\noindent\icon{#1} {\normalsize\fontfamily{qag}\selectfont\textbf{#2}}\lineunder
+	\noindent\icon{#1} {\fontsize{12}{\baselinestretch}\selectfont\textbf{#2}}\lineunder
 }
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
