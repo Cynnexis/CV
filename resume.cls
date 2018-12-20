@@ -6,7 +6,7 @@
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_2)
 
 \PassOptionsToPackage{table}{xcolor}
-\usepackage{fontspec}
+\RequirePackage{fontspec}
 \RequirePackage{titlesec}
 \RequirePackage{xcolor}
 \RequirePackage{changepage}
