@@ -69,8 +69,9 @@
 		\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1
 	\end{adjustwidth}
 }
-\newcommand{\jump}[1][0.4]{\vspace{#1\baselineskip}}
+\newcommand{\jump}[1][0.5]{\vspace{#1\baselineskip}}
 \newcommand{\bigjump}{\jump[1.5]}
+\newcommand{\Bigjump}{\jump[2]}
 \newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
