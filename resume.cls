@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{resume}[2011/03/26 My custom CV class]
+\ProvidesClass{resume}[2018/20/12 LaTeX file for resume]
 \LoadClass[a4paper,11pt]{article}
 
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_1)
