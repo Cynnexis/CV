@@ -116,3 +116,82 @@
 \newcommand{\firstwindowicon}[3][0cm]{\window[#1]{\sideicon{#2}}{#3}{\firsticoncolumnwidth}{\firsttextcolumnwidth}}
 \newcommand{\secondwindow}[3][0.2cm]{\window[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
 \newcommand{\secondwindowicon}[3][0.2cm]{\windowicon[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
+
+\newcommand{\header}[1]{
+	\noindent\fcolorbox{primary-color}{primary-color}{
+		\begin{minipage}{\paperwidth}
+			\vspace{1.2cm}
+			\myname
+			
+			\mytitle{#1}
+			\vspace{1.2cm}
+		\end{minipage}
+	}%
+}
+
+\newcommand{\sidepanel}[1]{
+	\noindent\fcolorbox{margin-background-color}{margin-background-color}{
+		\begin{minipage}[t][0.83\textheight]{\firstcolumnwidth}
+			\jump[1]
+			\begin{adjustwidth}{0.3cm}{0cm}
+				#1
+			\end{adjustwidth}
+		\end{minipage}
+	}%
+}
+
+\newcommand{\mainpanel}[1]{
+	\begin{minipage}[t][0.83\textheight]{\secondcolumnwidth}
+		#1
+	\end{minipage}%
+}
+
+\newcommand{\contact}[1]{
+	\firstwindowicon{person}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{Contact}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#1%
+}
+
+\newcommand{\languages}[1]{
+	\Bigjump
+	\firstwindowicon{language}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{Languages}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#1%
+}
+
+\newcommand{\displomas}[2]{
+	\jump[1]
+	\secondwindowicon{school}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
+
+\newcommand{\work}[2]{
+	\bigjump
+	\secondwindowicon{work}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
+
+\newcommand{\skills}[2]{
+	\bigjump
+	\secondwindowicon{poll}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
