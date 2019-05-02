@@ -6,12 +6,21 @@
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_2)
 
 \PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{top=0cm, bottom=0cm, left=0cm, right=0cm, headsep=0cm}{geometry}
+\PassOptionsToPackage{english}{babel}
+\RequirePackage{babel}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
 \RequirePackage{xcolor}
 \RequirePackage{changepage}
 \RequirePackage{float}
 \RequirePackage{graphicx}
+\RequirePackage{verbatim}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{csquotes}
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
 \newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
