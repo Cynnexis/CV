@@ -1,68 +1,38 @@
 % LaTeX engine: XeLaTeX
 \documentclass{resume}
 
-\graphicspath{{./images/}}
-
 \begin{document}
 
 \header{Recherche un stage en tant qu’Ingénieur\\Informatique}
 
 \sidepanel{
-	\contact{
-		\firstwindowicon{location}{
-			\entrytitle{Adresse}
-			\entrydescription{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
-		}
+	\contact{Contact}{
+		\iconentry{location}{Adresse}{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
 		
 		\bigjump
-		\firstwindowicon{phone}{
-			\entrytitle{Numéro de Téléphone}
-			\entrydescription{\link{tel:+33751648450}{+33 7 51 64 84 50}}
-		}
+		\iconentry{phone}{Numéro de Téléphone}{\link{tel:+33751648450}{+33 7 51 64 84 50}}
 		
 		\bigjump
-		\firstwindowicon{email}{
-			\entrytitle{Email}
-			\entrydescription{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
-		}
+		\iconentry{email}{Email}{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
 		
 		\bigjump
-		\firstwindowicon{linkedin}{
-			\entrytitle{LinkedIn}
-			\entrydescription{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
-		}
+		\iconentry{linkedin}{LinkedIn}{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
 		
 		\bigjump
-		\firstwindowicon{skype}{
-			\entrytitle{Skype}
-			\entrydescription{valentin.berger}
-		}
+		\iconentry{skype}{Skype}{valentin.berger}
 		
 		\bigjump
-		\firstwindowicon{github}{
-			\entrytitle{GitHub}
-			\entrydescription{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
-		}
+		\iconentry{github}{GitHub}{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
 	}
 	
-	\languages{
-		\firstwindowicon{flag-fr}{
-			\entrytitle{Français}
-			\entrydescription{Langue Natale}
-		}
+	\languages{Langues}{
+		\iconentry{flag-fr}{Français}{Langue natale}
 		
-		\jump
-		\firstwindowicon{flag-ca}{
-			\entrytitle{Anglais}
-			\entrydescription{Bonne maîtrise, Niveau B2 (CEFR),}
-			\entrydescription{6.5/9 à l'IELTS}
-		}
+		\bigjump
+		\iconentry{flag-ca}{Anglais}{Bonne maîtrise, Niveau B2 (CEFR),\\6.5/9 à l'IELTS}
 		
-		\jump
-		\firstwindowicon{flag-es}{
-			\entrytitle{Espagnol}
-			\entrydescription{Niveau débutant}
-		}
+		\bigjump
+		\iconentry{flag-es}{Espagnol}{Niveau débutant}
 	}
 	\vfill
 }%
@@ -147,9 +117,7 @@
 		}
 	}
 	
-	\vfill
-	\hfill{\scriptsize\textcolor{muted-color}{Ce document a été compilé avec {\DejaSans ❤️} par {\fontfamily{lmr}\selectfont\LaTeX{}}}} $\quad$
-	
+	\cvfootnote{Ce document a été compilé avec {\DejaSans ❤️} par {\fontfamily{lmr}\selectfont\LaTeX{}}}
 }
 
 \end{document}

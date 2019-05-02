@@ -21,6 +21,9 @@
 \RequirePackage{csquotes}
 \RequirePackage{geometry}
 \RequirePackage{hyperref}
+\RequirePackage{xparse}
+
+\graphicspath{{./images/}}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
 \newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
@@ -146,27 +149,39 @@
 	\end{minipage}%
 }
 
-\newcommand{\contact}[1]{
+\newcommand{\contact}[2]{
 	\firstwindowicon{person}{
 		\begin{adjustwidth}{0.3cm}{0cm}
-			\grouptitle{Contact}
+			\grouptitle{#1}
 		\end{adjustwidth}
 	}
 
 	\jump
-	#1%
+	#2%
 }
 
-\newcommand{\languages}[1]{
+\newcommand{\languages}[2]{
 	\Bigjump
 	\firstwindowicon{language}{
 		\begin{adjustwidth}{0.3cm}{0cm}
-			\grouptitle{Languages}
+			\grouptitle{#1}
 		\end{adjustwidth}
 	}
 
 	\jump
-	#1%
+	#2%
+}
+
+\newcommand{\interests}[2]{
+	\Bigjump
+	\firstwindowicon{lightbulb}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{#1}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#2%
 }
 
 \newcommand{\displomas}[2]{
@@ -194,4 +209,16 @@
 		
 		#2
 	}%
+}
+
+\newcommand{\iconentry}[3]{
+	\firstwindowicon{#1}{
+		\entrytitle{#2}
+		\entrydescription{#3}
+	}
+}
+
+\newcommand{\cvfootnote}[1]{
+	\vfill
+	\hfill{\scriptsize\textcolor{muted-color}{#1}} $\quad$%
 }

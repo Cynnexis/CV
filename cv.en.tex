@@ -1,68 +1,38 @@
 % LaTeX engine: XeLaTeX
 \documentclass{resume}
 
-\graphicspath{{./images/}}
-
 \begin{document}
 
 \header{Looking for an Internship as an Engineer\\in Computer Science}
 
 \sidepanel{
-	\contact{
-		\firstwindowicon{location}{
-			\entrytitle{Address}
-			\entrydescription{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
-		}
+	\contact{Contact}{
+		\iconentry{location}{Address}{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
+		
+		\bigjump
+		\iconentry{phone}{Phone Number}{\link{tel:+33751648450}{+33 7 51 64 84 50}}
+		
+		\bigjump
+		\iconentry{email}{Email}{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
+		
+		\bigjump
+		\iconentry{linkedin}{LinkedIn}{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
+		
+		\bigjump
+		\iconentry{skype}{Skype}{valentin.berger}
 
 		\bigjump
-		\firstwindowicon{phone}{
-			\entrytitle{Phone Number}
-			\entrydescription{\link{tel:+33751648450}{+33 7 51 64 84 50}}
-		}
-
-		\bigjump
-		\firstwindowicon{email}{
-			\entrytitle{Email}
-			\entrydescription{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
-		}
-
-		\bigjump
-		\firstwindowicon{linkedin}{
-			\entrytitle{LinkedIn}
-			\entrydescription{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
-		}
-
-		\bigjump
-		\firstwindowicon{skype}{
-			\entrytitle{Skype}
-			\entrydescription{valentin.berger}
-		}
-
-		\bigjump
-		\firstwindowicon{github}{
-			\entrytitle{GitHub}
-			\entrydescription{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
-		}
+		\iconentry{github}{GitHub}{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
 	}
 
-	\languages{
-		\firstwindowicon{flag-fr}{
-			\entrytitle{French}
-			\entrydescription{Native language}
-		}
+	\languages{Languages}{
+		\iconentry{flag-fr}{French}{Native language}
 
-		\jump
-		\firstwindowicon{flag-ca}{
-			\entrytitle{English}
-			\entrydescription{Fluent, B2 Level (CEFR),}
-			\entrydescription{6.5/9 according to the IELTS test}
-		}
+		\bigjump
+		\iconentry{flag-ca}{English}{Fluent, B2 Level (CEFR),\\6.5/9 according to the IELTS test}
 
-		\jump
-		\firstwindowicon{flag-es}{
-			\entrytitle{Spanish}
-			\entrydescription{Basic command}
-		}
+		\bigjump
+		\iconentry{flag-es}{Spanish}{Basic command}
 	}
 	\vfill
 }%
@@ -147,9 +117,7 @@
 		}
 	}
 	
-	\vfill
-	\hfill{\scriptsize\textcolor{muted-color}{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}} $\quad$
-	
+	\cvfootnote{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}
 }
 
 \end{document}
