@@ -22,6 +22,7 @@
 \RequirePackage{geometry}
 \RequirePackage{hyperref}
 \RequirePackage{xparse}
+\RequirePackage{ifthen}
 
 \graphicspath{{./images/}}
 
@@ -218,7 +219,9 @@
 	}
 }
 
-\newcommand{\cvfootnote}[1]{
+\newcommand{\cvfootnote}[2][true]{
 	\vfill
-	\hfill{\scriptsize\textcolor{muted-color}{#1}} $\quad$%
+	\begin{flushleft}
+	\ifthenelse{\equal{\detokenize{#1}}{\detokenize{false}}}{}{\hfill}{\scriptsize\textcolor{muted-color}{#2}} $\quad$%
+\end{flushleft}
 }
