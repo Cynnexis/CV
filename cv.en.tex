@@ -1,110 +1,44 @@
 % LaTeX engine: XeLaTeX
 \documentclass{resume}
 
-\usepackage[english]{babel}
-\usepackage{verbatim}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage[table]{xcolor}
-\usepackage{csquotes}
-\usepackage[top=0cm, bottom=0cm, left=0cm, right=0cm, headsep=0cm]{geometry}
-\usepackage{hyperref}
-
-\graphicspath{{./images/}}
-
 \begin{document}
 
-\noindent\fcolorbox{primary-color}{primary-color}{
-	\begin{minipage}{\paperwidth}
-		\vspace{1.2cm}
-		\myname
-		
-		\mytitle{Looking for an Internship as an Engineer\\in Computer Science}
-		\vspace{1.2cm}
-	\end{minipage}
-}
+\header{Looking for an Internship as an Engineer\\in Computer Science}
 
-\noindent\fcolorbox{margin-background-color}{margin-background-color}{
-	\begin{minipage}[t][0.83\textheight]{\firstcolumnwidth}
-		\jump[1]
-		\begin{adjustwidth}{0.3cm}{0cm}
-			\firstwindowicon{person}{
-				\begin{adjustwidth}{0.3cm}{0cm}
-					\grouptitle{Contact}
-				\end{adjustwidth}
-			}
-			
-			\jump
-			\firstwindowicon{location}{
-				\entrytitle{Address}
-				\entrydescription{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
-			}
-			
-			\bigjump
-			\firstwindowicon{phone}{
-				\entrytitle{Phone Number}
-				\entrydescription{\link{tel:+33751648450}{+33 7 51 64 84 50}}
-			}
-			
-			\bigjump
-			\firstwindowicon{email}{
-				\entrytitle{Email}
-				\entrydescription{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
-			}
-			
-			\bigjump
-			\firstwindowicon{linkedin}{
-				\entrytitle{LinkedIn}
-				\entrydescription{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
-			}
-			
-			\bigjump
-			\firstwindowicon{skype}{
-				\entrytitle{Skype}
-				\entrydescription{valentin.berger}
-			}
-			
-			\bigjump
-			\firstwindowicon{github}{
-				\entrytitle{GitHub}
-				\entrydescription{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
-			}
-			
-			\Bigjump
-			\firstwindowicon{language}{
-				\begin{adjustwidth}{0.3cm}{0cm}
-					\grouptitle{Languages}
-				\end{adjustwidth}
-			}
-			
-			\jump
-			\firstwindowicon{flag-fr}{
-				\entrytitle{French}
-				\entrydescription{Native language}
-			}
-			
-			\jump
-			\firstwindowicon{flag-ca}{
-				\entrytitle{English}
-				\entrydescription{Fluent, B2 Level (CEFR),}
-				\entrydescription{6.5/9 according to the IELTS test}
-			}
-			
-			\jump
-			\firstwindowicon{flag-es}{
-				\entrytitle{Spanish}
-				\entrydescription{Basic command}
-			}
-			\vfill
-		\end{adjustwidth}
-	\end{minipage}
+\sidepanel{
+	\contact{Contact}{
+		\iconentry{location}{Address}{63 Chemin du Moulin, 38660, La Terrasse, FRANCE}
+		
+		\bigjump
+		\iconentry{phone}{Phone Number}{\link{tel:+33751648450}{+33 7 51 64 84 50}}
+		
+		\bigjump
+		\iconentry{email}{Email}{\link{mailto:Valentin.berger38@gmail.com}{Valentin.berger38@gmail.com}}
+		
+		\bigjump
+		\iconentry{linkedin}{LinkedIn}{\link{https://www.linkedin.com/in/valentin-berger-075800155/}{https://www.linkedin.com/in}\\\link{https://www.linkedin.com/in/valentin-berger-075800155/}{/valentin-berger-075800155/}}
+		
+		\bigjump
+		\iconentry{skype}{Skype}{valentin.berger}
+
+		\bigjump
+		\iconentry{github}{GitHub}{\link{https://github.com/Cynnexis}{https://github.com/Cynnexis}}
+	}
+
+	\languages{Languages}{
+		\iconentry{flag-fr}{French}{Native language}
+
+		\bigjump
+		\iconentry{flag-ca}{English}{Fluent, B2 Level (CEFR),\\6.5/9 according to the IELTS test}
+
+		\bigjump
+		\iconentry{flag-es}{Spanish}{Basic command}
+	}
+	\vfill
 }%
 \hfill
-\begin{minipage}[t][0.83\textheight]{\secondcolumnwidth}
-	\jump[1]
-	\secondwindowicon{school}{
-		\grouptitle{Diplomas}
-		
+\mainpanel{
+	\displomas{Diplomas}{
 		\entrytitle{Computer Science Engineering Student at Polytech school (Lyon, France)}
 		\entrydate{2017 -- Today}
 		\entrydescription{Polytech Lyon, 4\textsuperscript{th} year of study}
@@ -115,10 +49,7 @@
 		\entrydescription{Université Grenoble Alpes}
 	}
 	
-	\bigjump
-	\secondwindowicon{work}{
-		\grouptitle{Professional Experiences}
-		
+	\work{Professional Experiences}{
 		\entrytitle{McMaster University \& TOTAL}
 		\entrydescription{TOTAL is a French petroleum company. McMaster is a university located in Hamilton, Canada.}
 		\entrydate{September 2018 to January 2019 -- 5 months}
@@ -166,10 +97,7 @@
 		}
 	}
 	
-	\bigjump
-	\secondwindowicon{poll}{
-		\grouptitle{Skills}
-		
+	\skills{Skills}{
 		\entrytitle{Operating Systems}
 		\entrydescription{UNIX Systems (especially Linux), Windows XP, 7, 8 and 10}
 		
@@ -189,9 +117,7 @@
 		}
 	}
 	
-	\vfill
-	\hfill{\scriptsize\textcolor{muted-color}{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}} $\quad$
-	
-\end{minipage}
+	\cvfootnote{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}
+}
 
 \end{document}

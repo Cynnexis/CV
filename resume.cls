@@ -6,12 +6,24 @@
 % https://www.overleaf.com/learn/latex/How_to_write_a_LaTeX_class_file_and_design_your_own_CV_(Part_2)
 
 \PassOptionsToPackage{table}{xcolor}
+\PassOptionsToPackage{top=0cm, bottom=0cm, left=0cm, right=0cm, headsep=0cm}{geometry}
+\PassOptionsToPackage{english}{babel}
+\RequirePackage{babel}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
 \RequirePackage{xcolor}
 \RequirePackage{changepage}
 \RequirePackage{float}
 \RequirePackage{graphicx}
+\RequirePackage{verbatim}
+\RequirePackage{float}
+\RequirePackage{graphicx}
+\RequirePackage{csquotes}
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{xparse}
+
+\graphicspath{{./images/}}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
 \newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
@@ -107,3 +119,106 @@
 \newcommand{\firstwindowicon}[3][0cm]{\window[#1]{\sideicon{#2}}{#3}{\firsticoncolumnwidth}{\firsttextcolumnwidth}}
 \newcommand{\secondwindow}[3][0.2cm]{\window[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
 \newcommand{\secondwindowicon}[3][0.2cm]{\windowicon[#1]{#2}{#3}{\secondiconcolumnwidth}{\secondtextcolumnwidth}}
+
+\newcommand{\header}[1]{
+	\noindent\fcolorbox{primary-color}{primary-color}{
+		\begin{minipage}{\paperwidth}
+			\vspace{1.2cm}
+			\myname
+			
+			\mytitle{#1}
+			\vspace{1.2cm}
+		\end{minipage}
+	}%
+}
+
+\newcommand{\sidepanel}[1]{
+	\noindent\fcolorbox{margin-background-color}{margin-background-color}{
+		\begin{minipage}[t][0.83\textheight]{\firstcolumnwidth}
+			\jump[1]
+			\begin{adjustwidth}{0.3cm}{0cm}
+				#1
+			\end{adjustwidth}
+		\end{minipage}
+	}%
+}
+
+\newcommand{\mainpanel}[1]{
+	\begin{minipage}[t][0.83\textheight]{\secondcolumnwidth}
+		#1
+	\end{minipage}%
+}
+
+\newcommand{\contact}[2]{
+	\firstwindowicon{person}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{#1}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#2%
+}
+
+\newcommand{\languages}[2]{
+	\Bigjump
+	\firstwindowicon{language}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{#1}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#2%
+}
+
+\newcommand{\interests}[2]{
+	\Bigjump
+	\firstwindowicon{lightbulb}{
+		\begin{adjustwidth}{0.3cm}{0cm}
+			\grouptitle{#1}
+		\end{adjustwidth}
+	}
+
+	\jump
+	#2%
+}
+
+\newcommand{\displomas}[2]{
+	\jump[1]
+	\secondwindowicon{school}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
+
+\newcommand{\work}[2]{
+	\bigjump
+	\secondwindowicon{work}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
+
+\newcommand{\skills}[2]{
+	\bigjump
+	\secondwindowicon{poll}{
+		\grouptitle{#1}
+		
+		#2
+	}%
+}
+
+\newcommand{\iconentry}[3]{
+	\firstwindowicon{#1}{
+		\entrytitle{#2}
+		\entrydescription{#3}
+	}
+}
+
+\newcommand{\cvfootnote}[1]{
+	\vfill
+	\hfill{\scriptsize\textcolor{muted-color}{#1}} $\quad$%
+}
