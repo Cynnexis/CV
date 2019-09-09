@@ -28,6 +28,11 @@ for image_filename in images_path:
 
 # Convert accent color
 if args.accent_color is not None:
+	if args.accent_color.startswith("0x"):
+		args.accent_color = args.accent_color.replace("0x", '#')
+	elif not args.accent_color.startswith('#'):
+		args.accent_color = '#' + args.accent_color
+	
 	# Get the old accent color
 	old_accent_color = "45818E"
 	with open("resume.cls", 'r') as f:
@@ -41,5 +46,8 @@ if args.accent_color is not None:
 	for image_path in images_path:
 		with open(image_path, 'r+') as f:
 			image_content = f.read()
-			image_content = re.sub('#' + old_accent_color, '#' + args.accent_color, image_content)
-			f.write(image_content)
+			new_image_content, nb_chgmt = re.subn('#' + old_accent_color, args.accent_color, image_content, flags=re.IGNORECASE)
+			if nb_chgmt > 0:
+				f.seek(0)
+				f.write(new_image_content)
+				f.truncate()
