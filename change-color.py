@@ -12,6 +12,11 @@ IMAGES_FOLDER_NAME = "images"
 # Parse the arguments
 p = argparse.ArgumentParser(prog="Change Color", description="Change the colors of the images and CVs.")
 p.add_argument("-p", "--primary-color", default=None, help="The accent color. Default is cyan (#45818E).")
+p.add_argument("-t", "--primary-text-color", default=None, help="The text color with the primary color as a background. Default is white (#FFFFFF).")
+p.add_argument("--h1-color", default=None, help="The header 1 color. Default is cyan (#45818E).")
+p.add_argument("--h2-color", default=None, help="The header 2 color. Used for bullet. Default is cyan (#294d55).")
+p.add_argument("--h3-color", default=None, help="The header 2 color. Used for bullet and date. Default is grey (#938690).")
+p.add_argument("--link-color", default=None, help="The link color. Default is blue (#185BC1).")
 args = p.parse_args()
 
 # Get the images
@@ -35,11 +40,11 @@ def change_color(new_color: str, default_old_color: str, color_name: str, update
 		old_color = default_old_color
 		with open("resume.cls", "r+") as f:
 			resume_cls = f.read()
-			color_matches = re.findall(r"\\definecolor{" + color_name + r"-color}{HTML}{#?([0-9a-fA-F]{6})}", resume_cls, re.MULTILINE)
+			color_matches = re.findall(r"\\definecolor\{" + color_name + r"\}\{HTML\}\{#?([0-9a-fA-F]{6})\}", resume_cls, re.MULTILINE)
 			if len(color_matches) > 0:
 				old_color = color_matches[0]
 			# Replace occurrence in resume.cls
-			new_resume_cls, nb_chgmt = re.subn(r"\\definecolor{" + color_name + r"}{HTML}{" + old_color + r'}', r"\\definecolor{" + color_name + "}{HTML}{" + re.sub("(#|0x)", '', new_color) + "}", resume_cls, re.IGNORECASE)
+			new_resume_cls, nb_chgmt = re.subn(r"\\definecolor\{" + color_name + r"\}\{HTML\}\{" + old_color + r'\}', r"\\definecolor{" + color_name + "}{HTML}{" + re.sub("(#|0x)", '', new_color) + "}", resume_cls, re.IGNORECASE)
 			if nb_chgmt > 0:
 				f.seek(0)
 				f.write(new_resume_cls)
@@ -63,3 +68,8 @@ def change_color(new_color: str, default_old_color: str, color_name: str, update
 
 
 change_color(args.primary_color, "45818E", "primary-color", True)
+change_color(args.primary_text_color, "FFFFFF", "primary-text-color", False)
+change_color(args.h1_color, "45818E", "h1-color", False)
+change_color(args.h2_color, "294d55", "h2-color", False)
+change_color(args.h3_color, "938690", "h3-color", False)
+change_color(args.link_color, "185BC1", "link-color", False)
