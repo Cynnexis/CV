@@ -38,10 +38,10 @@
 % Switch all fonts to sans serif by default (except math expressions)
 \renewcommand{\familydefault}{\sfdefault}
 
-\definecolor{primary-color}{HTML}{45818E} % #45818E
+\definecolor{primary-color}{HTML}{46b0c7} % #46b0c7
 \definecolor{primary-text-color}{HTML}{FFFFFF} % #FFFFFF
-\definecolor{h1-color}{HTML}{45818E} % #45818E
-\definecolor{h2-color}{HTML}{294d55} % #294d55
+\definecolor{h1-color}{HTML}{46b0c7} % #46b0c7
+\definecolor{h2-color}{HTML}{000000} % #000000
 \definecolor{h3-color}{HTML}{938690} % #938690
 \definecolor{link-color}{HTML}{185BC1} % #185BC1
 
@@ -58,7 +58,7 @@
 \renewcommand{\linespread}{0}
 
 % Change color of bullet points
-\renewcommand{\labelitemi}{\textcolor{primary-color}{\textbullet}}
+\renewcommand{\labelitemi}{\textcolor{h1-color}{\textbullet}}
 \renewcommand{\labelitemii}{\textcolor{h2-color}{\textbullet}}
 \renewcommand{\labelitemiii}{\textcolor{h3-color}{\textbullet}}
 
@@ -89,7 +89,7 @@
 \newcommand{\grouptitle}[1]{\noindent{\fontsize{12}{\baselinestretch}\selectfont #1}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\fontsize{11}{\baselinestretch}\selectfont\textbf{#1}}
+		{\fontsize{11}{\baselinestretch}\selectfont\textcolor{h2-color}{\textbf{#1}}}
 	\end{adjustwidth}
 }
 \newcommand{\entrydescription}[1]{

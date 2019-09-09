@@ -56,7 +56,7 @@ def change_color(new_color: str, default_old_color: str, color_name: str, update
 			for image_path in images_path:
 				with open(image_path, 'r+') as f:
 					image_content = f.read()
-					new_image_content, nb_chgmt = re.subn('#' + old_color, args.primary_color, image_content, flags=re.IGNORECASE)
+					new_image_content, nb_chgmt = re.subn('#' + old_color, new_color, image_content, flags=re.IGNORECASE)
 					if nb_chgmt > 0:
 						f.seek(0)
 						f.write(new_image_content)
