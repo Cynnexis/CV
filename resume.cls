@@ -39,8 +39,6 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 \definecolor{primary-color}{HTML}{45818E} % #45818E
-\definecolor{light-primary-color}{HTML}{6facb9} % #6facb9
-\definecolor{dark-primary-color}{HTML}{294d55} % #294d55
 \definecolor{primary-text-color}{HTML}{FFFFFF} % #FFFFFF
 \definecolor{h1-color}{HTML}{45818E} % #45818E
 \definecolor{h2-color}{HTML}{294d55} % #294d55
