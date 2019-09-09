@@ -27,8 +27,8 @@
 \graphicspath{{./images/}}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
-\newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
-\newfontfamily{\gothicb}{GOTHICB}[Extension=.ttf]
+\newfontfamily{\gothic}{GOTHIC}[Path=fonts/,Extension=.ttf]
+\newfontfamily{\gothicb}{GOTHICB}[Path=fonts/,Extension=.ttf]
 \newfontfamily\DejaSans{DejaVu Sans}
 
 \setmainfont{Calibri}
