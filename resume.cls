@@ -71,7 +71,7 @@
 \newcommand{\secondiconcolumnwidth}{0.05\textwidth}
 \newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
-\newcommand{\profilesize}{50pt}
+\newcommand{\profilesize}{100pt}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
 
@@ -119,18 +119,20 @@
 \newcommand{\header}[1]{
 	\noindent\fcolorbox{primary-color}{primary-color}{
 		\begin{minipage}{\paperwidth}%
-			\vspace{1.3cm}
-			\begin{minipage}[t]{0.2\paperwidth}
-				\hspace{1cm}%
-				\raisebox{-\profilesize}{\includegraphics[width=\profilesize]{profile}}
-				\hspace{-2pt}\llap{\raisebox{-\profilesize}{\includegraphics[width=\profilesize]{profile_mask}}}
+			\vspace{0.5cm}
+			\begin{minipage}[t]{0.3\paperwidth}
+				\hspace{1.5cm}%
+				\raisebox{-\profilesize}{
+					\includegraphics[width=\profilesize]{profile}%
+				}
 			\end{minipage}%
-			\begin{minipage}[t]{0.75\paperwidth}
+			\begin{minipage}[t]{0.65\paperwidth}
+				\vspace{0.8cm}
 				\myname
 				
 				\mytitle{#1}
 			\end{minipage}
-			\vspace{1.3cm}
+			\vspace{0.5cm}
 		\end{minipage}
 	}%
 }
