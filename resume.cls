@@ -71,15 +71,12 @@
 \newcommand{\secondiconcolumnwidth}{0.05\textwidth}
 \newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
+\newcommand{\profilesize}{100pt}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
 
-\newcommand{\myname}{\hspace{4cm}\gothicb\fontsize{18}{0.2}\selectfont\color{primary-text-color}\textbf{Valentin Berger}}
-\newcommand{\mytitle}[1]{
-	\begin{adjustwidth}{4cm}{0cm}
-		\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1
-	\end{adjustwidth}
-}
+\newcommand{\myname}{\gothicb\fontsize{18}{0.2}\selectfont\color{primary-text-color}\textbf{Valentin Berger}}
+\newcommand{\mytitle}[1]{\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1}
 \newcommand{\jump}[1][0.5]{\vspace{#1\baselineskip}}
 \newcommand{\bigjump}{\jump[1.5]}
 \newcommand{\Bigjump}{\jump[2]}
@@ -121,12 +118,21 @@
 
 \newcommand{\header}[1]{
 	\noindent\fcolorbox{primary-color}{primary-color}{
-		\begin{minipage}{\paperwidth}
-			\vspace{1.2cm}
-			\myname
-			
-			\mytitle{#1}
-			\vspace{1.2cm}
+		\begin{minipage}{\paperwidth}%
+			\vspace{0.5cm}
+			\begin{minipage}[t]{0.3\paperwidth}
+				\hspace{1.5cm}%
+				\raisebox{-\profilesize}{
+					\includegraphics[width=\profilesize]{profile}%
+				}
+			\end{minipage}%
+			\begin{minipage}[t]{0.65\paperwidth}
+				\vspace{0.8cm}
+				\myname
+				
+				\mytitle{#1}
+			\end{minipage}
+			\vspace{0.5cm}
 		\end{minipage}
 	}%
 }
