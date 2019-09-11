@@ -123,6 +123,7 @@
 			\begin{minipage}[t]{0.2\paperwidth}
 				\hspace{1cm}%
 				\raisebox{-\profilesize}{\includegraphics[width=\profilesize]{profile}}
+				\hspace{-2pt}\llap{\raisebox{-\profilesize}{\includegraphics[width=\profilesize]{profile_mask}}}
 			\end{minipage}%
 			\begin{minipage}[t]{0.75\paperwidth}
 				\myname
