@@ -13,8 +13,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="cv.svg"
-   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\cv.png"
+   sodipodi:docname="profile_mask.svg"
+   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\profile_mask.png"
    inkscape:export-xdpi="2457.6001"
    inkscape:export-ydpi="2457.6001"
    style="fill:#000000">
@@ -26,7 +26,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -46,8 +46,8 @@
      id="namedview8"
      showgrid="true"
      inkscape:zoom="32"
-     inkscape:cx="9.1193283"
-     inkscape:cy="10.970822"
+     inkscape:cx="4.3849533"
+     inkscape:cy="11.033322"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
@@ -70,30 +70,14 @@
   </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
-     id="layer1"
-     inkscape:label="Background"
-     style="display:inline"
-     sodipodi:insensitive="true" />
-  <g
-     inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Logo"
-     style="display:inline"
-     sodipodi:insensitive="true">
-    <path
-       style="display:inline;opacity:1;fill:#46b0c7;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10,0 A 10,10 0 0 0 0,10 H 20 A 10,10 0 0 0 10,0 Z"
-       id="path815"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;opacity:1;fill:#eeeeee;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,10 A 10,10 0 0 0 10,20 V 10 Z"
-       id="path4530"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10,10 V 20 A 10,10 0 0 0 20,10 Z"
-       id="path4538"
-       inkscape:connector-curvature="0" />
+     inkscape:label="Mask"
+     style="display:inline">
+    <image
+		x=-1
+		y=-1
+		width=22
+		height=22
+		xlink:href="profile_mask.svg" />
   </g>
 </svg>

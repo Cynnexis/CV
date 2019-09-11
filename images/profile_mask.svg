@@ -5,6 +5,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    height="20"
@@ -13,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="cv.svg"
-   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\cv.png"
+   sodipodi:docname="profile_mask.svg"
+   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\profile.png"
    inkscape:export-xdpi="2457.6001"
    inkscape:export-ydpi="2457.6001"
    style="fill:#000000">
@@ -46,12 +47,12 @@
      id="namedview8"
      showgrid="true"
      inkscape:zoom="32"
-     inkscape:cx="9.1193283"
-     inkscape:cy="10.970822"
+     inkscape:cx="6.9484181"
+     inkscape:cy="9.0830931"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
      inkscape:bbox-nodes="true"
@@ -71,29 +72,27 @@
   <g
      inkscape:groupmode="layer"
      id="layer1"
-     inkscape:label="Background"
-     style="display:inline"
-     sodipodi:insensitive="true" />
+     inkscape:label="Profile">
+    <image
+       sodipodi:absref="D:\Workspace\LaTeX\CV\images\facebook_picture.png"
+       xlink:href="facebook_picture.png"
+       width="20"
+       height="20.160255"
+       preserveAspectRatio="none"
+       id="image823"
+       x="0"
+       y="-2.8467044e-17" />
+  </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Logo"
+     inkscape:label="Mask"
      style="display:inline"
      sodipodi:insensitive="true">
     <path
-       style="display:inline;opacity:1;fill:#46b0c7;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10,0 A 10,10 0 0 0 0,10 H 20 A 10,10 0 0 0 10,0 Z"
-       id="path815"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;opacity:1;fill:#eeeeee;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 0,10 A 10,10 0 0 0 10,20 V 10 Z"
-       id="path4530"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 10,10 V 20 A 10,10 0 0 0 20,10 Z"
-       id="path4538"
+       style="opacity:1;fill:#46b0c7;fill-opacity:1;stroke:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M -1,-1 V 21 H 21 V -1 Z M 9.8789062,0 A 10,10 0 0 1 19.998047,9.8378906 L 20,10 A 10,10 0 0 1 10.041016,20 10,10 0 0 1 0,10.080078 10,10 0 0 1 9.8789062,0 Z"
+       id="rect817"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
