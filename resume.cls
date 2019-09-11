@@ -27,8 +27,8 @@
 \graphicspath{{./images/}}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
-\newfontfamily{\gothic}{GOTHIC}[Path=fonts/,Extension=.ttf]
-\newfontfamily{\gothicb}{GOTHICB}[Path=fonts/,Extension=.ttf]
+\newfontfamily{\gothic}{GOTHIC}[Extension=.ttf]
+\newfontfamily{\gothicb}{GOTHICB}[Extension=.ttf]
 \newfontfamily\DejaSans{DejaVu Sans}
 
 \setmainfont{Calibri}
@@ -38,10 +38,10 @@
 % Switch all fonts to sans serif by default (except math expressions)
 \renewcommand{\familydefault}{\sfdefault}
 
-\definecolor{primary-color}{HTML}{46b0c7} % #46b0c7
+\definecolor{primary-color}{HTML}{45818E} % #45818E
 \definecolor{primary-text-color}{HTML}{FFFFFF} % #FFFFFF
-\definecolor{h1-color}{HTML}{46b0c7} % #46b0c7
-\definecolor{h2-color}{HTML}{000000} % #000000
+\definecolor{h1-color}{HTML}{45818E} % #45818E
+\definecolor{h2-color}{HTML}{294d55} % #294d55
 \definecolor{h3-color}{HTML}{938690} % #938690
 \definecolor{link-color}{HTML}{185BC1} % #185BC1
 
@@ -58,7 +58,7 @@
 \renewcommand{\linespread}{0}
 
 % Change color of bullet points
-\renewcommand{\labelitemi}{\textcolor{h1-color}{\textbullet}}
+\renewcommand{\labelitemi}{\textcolor{primary-color}{\textbullet}}
 \renewcommand{\labelitemii}{\textcolor{h2-color}{\textbullet}}
 \renewcommand{\labelitemiii}{\textcolor{h3-color}{\textbullet}}
 
@@ -71,12 +71,15 @@
 \newcommand{\secondiconcolumnwidth}{0.05\textwidth}
 \newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
-\newcommand{\profilesize}{100pt}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
 
-\newcommand{\myname}{\gothicb\fontsize{18}{0.2}\selectfont\color{primary-text-color}\textbf{Valentin Berger}}
-\newcommand{\mytitle}[1]{\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1}
+\newcommand{\myname}{\hspace{4cm}\gothicb\fontsize{18}{0.2}\selectfont\color{primary-text-color}\textbf{Valentin Berger}}
+\newcommand{\mytitle}[1]{
+	\begin{adjustwidth}{4cm}{0cm}
+		\color{primary-text-color}\gothic\fontsize{18}{0.2}\selectfont #1
+	\end{adjustwidth}
+}
 \newcommand{\jump}[1][0.5]{\vspace{#1\baselineskip}}
 \newcommand{\bigjump}{\jump[1.5]}
 \newcommand{\Bigjump}{\jump[2]}
@@ -86,7 +89,7 @@
 \newcommand{\grouptitle}[1]{\noindent{\fontsize{12}{\baselinestretch}\selectfont #1}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\fontsize{11}{\baselinestretch}\selectfont\textcolor{h2-color}{\textbf{#1}}}
+		{\fontsize{11}{\baselinestretch}\selectfont\textbf{#1}}
 	\end{adjustwidth}
 }
 \newcommand{\entrydescription}[1]{
@@ -118,21 +121,12 @@
 
 \newcommand{\header}[1]{
 	\noindent\fcolorbox{primary-color}{primary-color}{
-		\begin{minipage}{\paperwidth}%
-			\vspace{0.5cm}
-			\begin{minipage}[t]{0.3\paperwidth}
-				\hspace{1.5cm}%
-				\raisebox{-\profilesize}{
-					\includegraphics[width=\profilesize]{profile}%
-				}
-			\end{minipage}%
-			\begin{minipage}[t]{0.65\paperwidth}
-				\vspace{0.8cm}
-				\myname
-				
-				\mytitle{#1}
-			\end{minipage}
-			\vspace{0.5cm}
+		\begin{minipage}{\paperwidth}
+			\vspace{1.2cm}
+			\myname
+			
+			\mytitle{#1}
+			\vspace{1.2cm}
 		\end{minipage}
 	}%
 }
