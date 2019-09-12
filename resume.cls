@@ -96,7 +96,7 @@
 \newcommand{\bigjump}{\jump[1.5]}
 \newcommand{\Bigjump}{\jump[2]}
 \newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
-\newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=18pt]{#1}}}
+\newcommand{\icon}[1]{\raisebox{-6pt}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
 \newcommand{\grouptitle}[1]{\noindent{\montserratm\fontsize{10}{\baselinestretch}\selectfont\textcolor{h1-color}{#1}}\lineunder}
 \newcommand{\entrytitle}[1]{
