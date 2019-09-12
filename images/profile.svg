@@ -5,6 +5,7 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    height="20"
@@ -13,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
-   sodipodi:docname="profile_mask.svg"
-   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\profile_mask.png"
+   sodipodi:docname="profile.svg"
+   inkscape:export-filename="D:\Workspace\LaTeX\CV\images\profile.png"
    inkscape:export-xdpi="2457.6001"
    inkscape:export-ydpi="2457.6001"
    style="fill:#000000">
@@ -26,7 +27,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -46,12 +47,12 @@
      id="namedview8"
      showgrid="true"
      inkscape:zoom="32"
-     inkscape:cx="4.3849533"
-     inkscape:cy="11.033322"
+     inkscape:cx="6.07559"
+     inkscape:cy="10.326124"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      inkscape:snap-bbox="true"
      inkscape:bbox-paths="true"
      inkscape:bbox-nodes="true"
@@ -70,14 +71,36 @@
   </sodipodi:namedview>
   <g
      inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Mask"
+     id="layer1"
+     inkscape:label="Picture"
      style="display:inline">
     <image
-		x=-1
-		y=-1
-		width=22
-		height=22
-		xlink:href="profile_mask.svg" />
+       sodipodi:absref="D:\Workspace\LaTeX\CV\images\facebook_picture.png"
+       xlink:href="facebook_picture.png"
+       width="20"
+       height="20.160255"
+       preserveAspectRatio="none"
+       id="image831"
+       x="0"
+       y="-7.1054274e-15"
+       style="display:inline;fill:#000000" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Mask"
+     style="display:inline"
+     sodipodi:insensitive="true">
+    <use
+       xlink:href="profile_mask.svg#rect817"
+       x="-1"
+       y="-1"
+       width="22"
+       height="22"
+       xlink:type="simple"
+       xlink:actuate="onLoad"
+       id="use8793"
+       xlink:show="embed"
+       transform="translate(1,1)" />
   </g>
 </svg>
