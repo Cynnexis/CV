@@ -27,8 +27,23 @@
 \graphicspath{{./images/}}
 
 % Set custom fonts https://www.overleaf.com/learn/latex/Questions/I_have_a_custom_font_I%27d_like_to_load_to_my_document._How_can_I_do_this%3F
-\newfontfamily{\gothic}{GOTHIC}[Path=fonts/,Extension=.ttf]
-\newfontfamily{\gothicb}{GOTHICB}[Path=fonts/,Extension=.ttf]
+\newfontfamily{\gothic}{GOTHIC}[Path=fonts/Gothic/,Extension=.ttf]
+\newfontfamily{\gothicb}{GOTHICB}[Path=fonts/Gothic/,Extension=.ttf]
+
+\newfontfamily{\montserratb}{Montserrat-Bold}[Path=fonts/Montserrat/,Extension=.ttf]
+\newfontfamily{\montserratl}{Montserrat-Light}[Path=fonts/Montserrat/,Extension=.ttf]
+\newfontfamily{\montserratm}{Montserrat-Medium}[Path=fonts/Montserrat/,Extension=.ttf]
+\newfontfamily{\montserratr}{Montserrat-Regular}[Path=fonts/Montserrat/,Extension=.ttf]
+\newfontfamily{\montserratt}{Montserrat-Thin}[Path=fonts/Montserrat/,Extension=.ttf]
+\newcommand{\montserrat}{\montserratr}% Put the Montserrat-Regular as the default font for Montserrat
+
+\newfontfamily{\robotob}{Roboto-Bold}[Path=fonts/Roboto/,Extension=.ttf]
+\newfontfamily{\robotol}{Roboto-Light}[Path=fonts/Roboto/,Extension=.ttf]
+\newfontfamily{\robotom}{Roboto-Medium}[Path=fonts/Roboto/,Extension=.ttf]
+\newfontfamily{\robotor}{Roboto-Regular}[Path=fonts/Roboto/,Extension=.ttf]
+\newfontfamily{\robotot}{Roboto-Thin}[Path=fonts/Roboto/,Extension=.ttf]
+\newcommand{\roboto}{\robotor}% Put the Roboto-Regular as the default font for Roboto
+
 \newfontfamily\DejaSans{DejaVu Sans}
 
 \setmainfont{Calibri}
@@ -41,7 +56,7 @@
 \definecolor{primary-color}{HTML}{46b0c7} % #46b0c7
 \definecolor{primary-text-color}{HTML}{FFFFFF} % #FFFFFF
 \definecolor{h1-color}{HTML}{000000} % #000000
-\definecolor{h2-color}{HTML}{000000} % #000000
+\definecolor{h2-color}{HTML}{1c2225} % #1c2225
 \definecolor{h3-color}{HTML}{938690} % #938690
 \definecolor{link-color}{HTML}{185BC1} % #185BC1
 
@@ -81,12 +96,12 @@
 \newcommand{\bigjump}{\jump[1.5]}
 \newcommand{\Bigjump}{\jump[2]}
 \newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
-\newcommand{\icon}[1]{\raisebox{-0.2\height}{\includegraphics[height=18pt]{#1}}}
+\newcommand{\icon}[1]{\raisebox{-6pt}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
-\newcommand{\grouptitle}[1]{\noindent{\fontsize{12}{\baselinestretch}\selectfont\textcolor{h1-color}{#1}}\lineunder}
+\newcommand{\grouptitle}[1]{\noindent{\montserratm\fontsize{10}{\baselinestretch}\selectfont\textcolor{h1-color}{#1}}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
-		{\fontsize{11}{\baselinestretch}\selectfont\textcolor{h2-color}{\textbf{#1}}}
+		{\robotom\fontsize{10}{\baselinestretch}\selectfont\textcolor{h2-color}{\textbf{#1}}}
 	\end{adjustwidth}
 }
 \newcommand{\entrydescription}[1]{
