@@ -137,9 +137,11 @@
 			\vspace{0.5cm}
 			\begin{minipage}[t]{0.3\paperwidth}
 				\hspace{1.5cm}%
-				\raisebox{-\profilesize}{
-					\includegraphics[width=\profilesize]{profile}%
-				}
+				% \raisebox{-\profilesize}{
+				% 	\includegraphics[width=\profilesize]{profile}%
+				% }
+				\hspace{\profilesize}
+				\vspace{\profilesize}
 			\end{minipage}%
 			\begin{minipage}[t]{0.65\paperwidth}
 				\vspace{0.8cm}
