@@ -1,10 +1,6 @@
 name: CV generator
 
 on:
-  pull_request:
-    branches:
-      - master
-      - 'cicd/**'
   push:
     branches:
       - master
@@ -14,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-18.04
     name: Build LaTeX files
-    if: github.event_name == 'pull_request' || contains(github.ref, 'cicd/')
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -54,7 +49,6 @@ jobs:
     runs-on: ubuntu-18.04
     name: Release the PDF files
     needs: build
-    if: github.event_name == 'pull_request' && github.base_ref == 'master' || contains(github.ref, 'cicd/')
     steps:
       - name: Download PDF files
         id: download_pdf
