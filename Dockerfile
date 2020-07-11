@@ -9,9 +9,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG OSFONTDIR="/usr/share/fonts:/usr/local/share/fonts:/root/.fonts"
 ENV OSFONTDIR="/usr/share/fonts:/usr/local/share/fonts:/root/.fonts"
 
+# Install dependencies
+RUN apt-get install -qy dos2unix
+
 # Update font cache
 RUN luaotfload-tool --update
 
 COPY . .
-# Compile LaTeX documents using LuaLaTeX
-CMD [ "bash", "-c", "DEBIAN_FRONTEND=noninteractive lualatex -shell-escape -halt-on-error -interaction=batchmode -output-directory . cv.en.tex && lualatex -shell-escape -halt-on-error -interaction=batchmode -output-directory . cv.fr.tex" ]
+
+# Some files on Windows use CRLF newlines. It is incompatible with UNIX.
+RUN dos2unix docker-entrypoint.sh && chmod a+rwx docker-entrypoint.sh
+
+ENTRYPOINT ["bash", "./docker-entrypoint.sh"]

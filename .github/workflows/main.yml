@@ -1,0 +1,102 @@
+name: CV generator
+
+on:
+  push:
+    branches:
+      - master
+      - 'cicd/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    name: Build LaTeX files
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Give permissions
+        id: x_perm
+        run: chmod a+rwx docker-entrypoint.sh
+      - name: Build the images
+        id: build_png
+        run: make png
+      - name: Build files
+        id: build_tex
+        uses: ./
+      - name: Export PDF files
+        run: |
+          mkdir artifacts
+          mv *.pdf artifacts/
+      - name: Upload all PDF files as an artifact
+        # See https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
+        id: upload_cv
+        uses: actions/upload-artifact@v1
+        with:
+          name: cv
+          path: artifacts/
+      - name: Upload cv.en.pdf as an artifact
+        id: upload_cv_en_pdf
+        uses: actions/upload-artifact@v1
+        with:
+          name: cv.en
+          path: artifacts/cv.en.pdf
+      - name: Upload cv.fr.pdf as an artifact
+        id: upload_cv_fr_pdf
+        uses: actions/upload-artifact@v1
+        with:
+          name: cv.fr
+          path: artifacts/cv.fr.pdf
+  release:
+    runs-on: ubuntu-18.04
+    name: Release the PDF files
+    needs: build
+    steps:
+      - name: Download PDF files
+        id: download_pdf
+        uses: actions/download-artifact@v2
+        with:
+          name: cv
+      - name: Zip PDF files
+        id: zip_pdf
+        run: zip -j cv.zip *.pdf
+      - name: Create a release for the PDF files
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.sha }}
+          release_name: ${{ github.sha }}
+          body: "Ref: ${{ github.ref }} SHA: ${{ github.sha }}"
+          draft: true
+          prerelease: false
+      - name: Upload release asset cv.zip
+        # See https://github.com/actions/upload-release-asset
+        id: upload_release_asset_cv
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # See https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./cv.zip
+          asset_name: cv.zip
+          asset_content_type: application/zip
+      - name: Upload release asset cv.en.pdf
+        id: upload_release_asset_cv_en
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv.en.pdf
+          asset_name: cv.en.pdf
+          asset_content_type: application/pdf
+      - name: Upload release asset cv.fr.pdf
+        id: upload_release_asset_cv_fr
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv.fr.pdf
+          asset_name: cv.fr.pdf
+          asset_content_type: application/pdf

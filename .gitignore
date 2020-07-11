@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/git,latex,linux,macos,windows,libreoffice,pycharm+all,microsoftoffice
-# Edit at https://www.gitignore.io/?templates=git,latex,linux,macos,windows,libreoffice,pycharm+all,microsoftoffice
+# Created by https://www.toptal.com/developers/gitignore/api/git,macos,linux,latex,windows,pycharm+all,libreoffice,microsoftoffice,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=git,macos,linux,latex,windows,pycharm+all,libreoffice,microsoftoffice,visualstudiocode
 
 ### Git ###
 # Created by git for backups. To disable backups in Git:
@@ -37,9 +37,9 @@
 *.xdv
 *-converted-to.*
 # these rules might exclude image files for figures etc.
-# *.ps
-# *.eps
-# *.pdf
+*.ps
+*.eps
+*.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf
@@ -129,6 +129,8 @@ acs-*.bib
 *.glo
 *.gls
 *.glsdefs
+*.lzo
+*.lzs
 
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
 # *.ist
@@ -246,8 +248,9 @@ pythontex-files-*/
 # xindy
 *.xdy
 
-# xypic precompiled matrices
+# xypic precompiled matrices and outlines
 *.xyc
+*.xyd
 
 # endfloat
 *.ttt
@@ -270,8 +273,14 @@ TSWLatexianTemp*
 # Kile
 *.backup
 
+# gummi
+.*.swp
+
 # KBibTeX
 *~[0-9]*
+
+# TeXnicCenter
+*.tps
 
 # auto folder when using emacs and auctex
 ./auto/*
@@ -283,7 +292,18 @@ TSWLatexianTemp*
 # standalone packages
 *.sta
 
+# Makeindex log files
+*.lpz
+
+# REVTeX puts footnotes in the bibliography by default, unless the nofootinbib
+# option is specified. Footnotes are the stored in a file with suffix Notes.bib.
+# Uncomment the next line to have this generated file ignored.
+#*Notes.bib
+
 ### LaTeX Patch ###
+# LIPIcs / OASIcs
+*.vtc
+
 # glossaries
 *.glstex
 
@@ -356,7 +376,7 @@ Backup of *.doc*
 *.~vsd*
 
 ### PyCharm+all ###
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
@@ -386,6 +406,9 @@ Backup of *.doc*
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
@@ -441,6 +464,18 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -467,4 +502,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/git,latex,linux,macos,windows,libreoffice,pycharm+all,microsoftoffice
+# End of https://www.toptal.com/developers/gitignore/api/git,macos,linux,latex,windows,pycharm+all,libreoffice,microsoftoffice,visualstudiocode
