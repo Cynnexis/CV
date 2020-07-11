@@ -21,6 +21,9 @@ jobs:
       - name: Give permissions
         id: x_perm
         run: chmod a+rwx docker-entrypoint.sh
+      - name: Build the images
+        id: build_png
+        run: make png
       - name: Build files
         id: build_tex
         uses: ./
