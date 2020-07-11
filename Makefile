@@ -1,10 +1,11 @@
 DOCKER_IMAGE=cynnexis/cv
-DOCKER_INKSCAPE := docker run --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape -C --export-overwrite
+DOCKER_INKSCAPE := docker run --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape --export-overwrite
 ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profile.png images/email.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/space.png images/work.png images/write.png
 ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
 ALL_GENERATED_48_PNG := images/cv48.png images/flag-ca48.png images/flag-fr48.png
-ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_48_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENERATED_16_PNG)
+ALL_GENERATED_PNG_EXCEPT_48 := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENERATED_16_PNG)
+ALL_GENERATED_PNG := $(ALL_GENERATED_PNG_EXCEPT_48) $(ALL_GENERATED_48_PNG)
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
 ALL_CV := cv.en.pdf cv.fr.pdf
 
@@ -33,7 +34,7 @@ help:
 all: $(ALL_CV)
 
 clean:
-	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf *.pdf_tex $(ALL_GENERATED_PNG)
+	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf *.pdf_tex $(ALL_GENERATED_PNG_EXCEPT_48)
 	rm -rf _minted-*/
 
 docker-build:
@@ -71,20 +72,21 @@ images/work.png: images/work.svg
 images/write.png: images/write.svg
 
 $(ALL_GENERATED_512_PNG):
-	$(DOCKER_INKSCAPE) --export-filename "/root/svg/$@" -w 512 -h 512 "/root/svg/$<"
+	$(DOCKER_INKSCAPE) -C --export-filename "/root/svg/$@" -w 512 -h 512 "/root/svg/$<"
 
 images/cv16.png: images/cv.svg
-	$(DOCKER_INKSCAPE) --export-filename "/root/svg/$@" -w 16 -h 16 "/root/svg/$<"
+	$(DOCKER_INKSCAPE) -C --export-filename "/root/svg/$@" -w 16 -h 16 "/root/svg/$<"
 
 images/cv32.png: images/cv.svg
-	$(DOCKER_INKSCAPE) --export-filename "/root/svg/$@" -w 32 -h 32 "/root/svg/$<"
+	$(DOCKER_INKSCAPE) -C --export-filename "/root/svg/$@" -w 32 -h 32 "/root/svg/$<"
 
 images/cv48.png: images/cv.svg
 images/flag-ca48.png: images/flag-ca.svg
 images/flag-fr48.png: images/flag-fr.svg
 
 $(ALL_GENERATED_48_PNG):
-	$(DOCKER_INKSCAPE) --export-filename "/root/svg/$@" -w 48 -h 48 "/root/svg/$<"
+	# 48-sized PNG are exported according to the drawing, not the canvas
+	$(DOCKER_INKSCAPE) -D --export-filename "/root/svg/$@" -w 48 "/root/svg/$<"
 
 png: $(ALL_GENERATED_PNG)
 
