@@ -33,7 +33,7 @@ help:
 
 all: cv
 
-clean: clean-build clean-pdf clean-image
+clean: clean-build clean-pdf clean-png
 
 clean-build:
 	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf_tex
@@ -42,7 +42,7 @@ clean-build:
 clean-pdf:
 	rm -f *.pdf
 
-clean-image:
+clean-png:
 	rm -f $(ALL_GENERATED_PNG_EXCEPT_48)
 
 docker-build:

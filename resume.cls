@@ -8,6 +8,7 @@
 \PassOptionsToPackage{table}{xcolor}
 \PassOptionsToPackage{top=0cm, bottom=0cm, left=0cm, right=0cm, headsep=0cm}{geometry}
 \PassOptionsToPackage{english}{babel}
+\RequirePackage{adjustbox}
 \RequirePackage{babel}
 \RequirePackage{fontspec}
 \RequirePackage{titlesec}
@@ -87,6 +88,8 @@
 \newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
 \newcommand{\profilesize}{100pt}
+\newcommand{\MainIconTitleSpace}{0.2cm}
+\newcommand{\MainEntryLeftSpace}{0pt}
 
 \newcommand{\link}[2]{\textcolor{link-color}{\underline{\href{#1}{#2}}}}
 
@@ -97,7 +100,7 @@
 \newcommand{\Bigjump}{\jump[2]}
 \newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\icon}[1]{\raisebox{-6pt}{\includegraphics[height=18pt]{#1}}}
-\newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\vspace{5pt}}
+\newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\vspace{10pt}}
 \newcommand{\grouptitle}[1]{\noindent{\montserratm\fontsize{10}{\baselinestretch}\selectfont\textcolor{h1-color}{#1}}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
@@ -204,29 +207,32 @@
 
 \newcommand{\displomas}[2]{
 	\jump[1]
-	\secondwindowicon[0cm]{school}{
-		\grouptitle{#1}
-		
-		#2%
-	}%
+	\secondwindowicon[\MainIconTitleSpace]{school}{
+		\grouptitle{#1}%
+	}
+	\hspace*{\MainEntryLeftSpace}\begin{minipage}[t]{0.95\textwidth}
+		#2
+	\end{minipage}%
 }
 
 \newcommand{\work}[2]{
 	\jump[1]
-	\secondwindowicon[0cm]{work}{
-		\grouptitle{#1}
-		
-		#2%
-	}%
+	\secondwindowicon[\MainIconTitleSpace]{work}{
+		\grouptitle{#1}%
+	}
+	\hspace*{\MainEntryLeftSpace}\begin{minipage}[t]{0.95\textwidth}
+		#2
+	\end{minipage}%
 }
 
 \newcommand{\skills}[2]{
 	\jump[1]
-	\secondwindowicon[0cm]{poll}{
-		\grouptitle{#1}
-
-		#2%
-	}%
+	\secondwindowicon[\MainIconTitleSpace]{poll}{
+		\grouptitle{#1}%
+	}
+	\hspace*{\MainEntryLeftSpace}\begin{minipage}[t]{0.95\textwidth}
+		#2
+	\end{minipage}%
 }
 
 \newcommand{\iconentry}[3]{
