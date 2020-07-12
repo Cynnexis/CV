@@ -97,7 +97,7 @@
 \newcommand{\Bigjump}{\jump[2]}
 \newcommand{\sideicon}[1]{\raisebox{-0.5\height}{\includegraphics[height=18pt]{#1}}}
 \newcommand{\icon}[1]{\raisebox{-6pt}{\includegraphics[height=18pt]{#1}}}
-\newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\\} %\par \hspace*{-4pt}
+\newcommand{\lineunder}{\vspace*{-5pt}\par{\color{primary-color}\hrulefill}\vspace{5pt}}
 \newcommand{\grouptitle}[1]{\noindent{\montserratm\fontsize{10}{\baselinestretch}\selectfont\textcolor{h1-color}{#1}}\lineunder}
 \newcommand{\entrytitle}[1]{
 	\begin{adjustwidth}{\leftspace}{0cm}
@@ -164,6 +164,7 @@
 }
 
 \newcommand{\mainpanel}[1]{
+	\renewcommand{\leftspace}{0cm}
 	\begin{minipage}[t][0.83\textheight]{\secondcolumnwidth}
 		#1
 	\end{minipage}%
@@ -176,7 +177,6 @@
 		\end{adjustwidth}
 	}
 
-	\jump
 	#2%
 }
 
@@ -188,7 +188,6 @@
 		\end{adjustwidth}
 	}
 
-	\jump
 	#2%
 }
 
@@ -200,34 +199,33 @@
 		\end{adjustwidth}
 	}
 
-	\jump
 	#2%
 }
 
 \newcommand{\displomas}[2]{
 	\jump[1]
-	\secondwindowicon{school}{
+	\secondwindowicon[0cm]{school}{
 		\grouptitle{#1}
 		
-		#2
+		#2%
 	}%
 }
 
 \newcommand{\work}[2]{
-	\bigjump
-	\secondwindowicon{work}{
+	\jump[1]
+	\secondwindowicon[0cm]{work}{
 		\grouptitle{#1}
 		
-		#2
+		#2%
 	}%
 }
 
 \newcommand{\skills}[2]{
-	\bigjump
-	\secondwindowicon{poll}{
+	\jump[1]
+	\secondwindowicon[0cm]{poll}{
 		\grouptitle{#1}
-		
-		#2
+
+		#2%
 	}%
 }
 
