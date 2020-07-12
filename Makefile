@@ -4,8 +4,7 @@ ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profil
 ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
 ALL_GENERATED_48_PNG := images/cv48.png images/flag-ca48.png images/flag-fr48.png
-ALL_GENERATED_PNG_EXCEPT_48 := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENERATED_16_PNG)
-ALL_GENERATED_PNG := $(ALL_GENERATED_PNG_EXCEPT_48) $(ALL_GENERATED_48_PNG)
+ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENERATED_16_PNG) $(ALL_GENERATED_48_PNG)
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
 ALL_CV := cv.en.pdf cv.fr.pdf
 
@@ -43,7 +42,7 @@ clean-pdf:
 	rm -f *.pdf
 
 clean-png:
-	rm -f $(ALL_GENERATED_PNG_EXCEPT_48)
+	rm -f $(ALL_GENERATED_PNG)
 
 docker-build:
 	docker build -t $(DOCKER_IMAGE) .
