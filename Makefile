@@ -31,11 +31,19 @@ help:
 	@echo "  cv.fr.docx   - Generate the resume in French, as a DOCX file."
 	@echo ''
 
-all: $(ALL_CV)
+all: cv
 
-clean:
-	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf *.pdf_tex $(ALL_GENERATED_PNG_EXCEPT_48)
+clean: clean-build clean-pdf clean-png
+
+clean-build:
+	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf_tex
 	rm -rf _minted-*/
+
+clean-pdf:
+	rm -f *.pdf
+
+clean-png:
+	rm -f $(ALL_GENERATED_PNG_EXCEPT_48)
 
 docker-build:
 	docker build -t $(DOCKER_IMAGE) .
@@ -97,6 +105,8 @@ cv.fr.pdf: cv.fr.tex $(TEX_DEPENDENCIES)
 
 $(ALL_CV):
 	docker run --rm -v "$$(pwd):/latex" $(DOCKER_IMAGE) make $<
+
+cv: $(ALL_CV)
 
 # GENERATE DOCX
 
