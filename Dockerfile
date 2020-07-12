@@ -9,6 +9,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG OSFONTDIR="/usr/share/fonts:/usr/local/share/fonts:/root/.fonts"
 ENV OSFONTDIR="/usr/share/fonts:/usr/local/share/fonts:/root/.fonts"
 
+ENV TERM=xterm-256color
+
 # Install dependencies
 RUN apt-get install -qy dos2unix
 
