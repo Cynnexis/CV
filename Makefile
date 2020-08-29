@@ -8,7 +8,7 @@ ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENE
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
 ALL_CV := cv.en.pdf cv.fr.pdf
 
-.PHONY: all clean docker-build docker-rmi docker-kill png cv
+.PHONY: help clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv
 
 help:
 	@echo "Makefile for generating the resume in different language."
@@ -29,8 +29,6 @@ help:
 	@echo "  cv.en.docx   - Generate the resume in English, as a DOCX file."
 	@echo "  cv.fr.docx   - Generate the resume in French, as a DOCX file."
 	@echo ''
-
-all: cv
 
 clean: clean-build clean-pdf clean-png
 
