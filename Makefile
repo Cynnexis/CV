@@ -1,5 +1,6 @@
+SHELL := /bin/bash
 DOCKER_IMAGE=cynnexis/cv
-DOCKER_INKSCAPE := docker run --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape --export-overwrite
+DOCKER_INKSCAPE := docker run --name="inkscape-generate-png" --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape --export-overwrite
 ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profile.png images/email.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/space.png images/work.png images/write.png
 ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
@@ -8,7 +9,9 @@ ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENE
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
 ALL_CV := cv.en.pdf cv.fr.pdf
 
-.PHONY: help clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv
+.PHONY: help all clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv
+
+.ONESHELL:
 
 help:
 	@echo "Makefile for generating the resume in different language."
@@ -29,6 +32,8 @@ help:
 	@echo "  cv.en.docx   - Generate the resume in English, as a DOCX file."
 	@echo "  cv.fr.docx   - Generate the resume in French, as a DOCX file."
 	@echo ''
+
+all: $(ALL_CV)
 
 clean: clean-build clean-pdf clean-png
 
@@ -72,7 +77,6 @@ images/profile.png: images/profile.svg
 images/running.png: images/running.post.svg
 images/school.png: images/school.svg
 images/skype.png: images/skype.svg
-images/space.png: images/space.svg
 images/work.png: images/work.svg
 images/write.png: images/write.svg
 
@@ -101,7 +105,7 @@ cv.en.pdf: cv.en.tex $(TEX_DEPENDENCIES)
 cv.fr.pdf: cv.fr.tex $(TEX_DEPENDENCIES)
 
 $(ALL_CV):
-	docker run --rm -v "$$(pwd):/latex" $(DOCKER_IMAGE) make $<
+	docker run --name="latex-make-$@" --rm -v "$$(pwd):/latex" $(DOCKER_IMAGE) make $<
 
 cv: $(ALL_CV)
 
