@@ -87,7 +87,7 @@
 \newcommand{\secondiconcolumnwidth}{0.05\textwidth}
 \newcommand{\secondtextcolumnwidth}{0.88\textwidth}
 \newcommand{\leftspace}{0.2cm}
-\newcommand{\profilesize}{100pt}
+\newcommand{\profilesize}{90pt}
 \newcommand{\MainIconTitleSpace}{0.2cm}
 \newcommand{\MainEntryLeftSpace}{0pt}
 
@@ -137,7 +137,7 @@
 \newcommand{\header}[1]{
 	\noindent\fcolorbox{primary-color}{primary-color}{
 		\begin{minipage}{\paperwidth}%
-			\vspace{0.5cm}
+			\vspace{0.15cm}
 			\begin{minipage}[t]{0.3\paperwidth}
 				\hspace{1.5cm}%
 				\raisebox{-\profilesize}{
@@ -150,26 +150,26 @@
 				
 				\mytitle{#1}
 			\end{minipage}
-			\vspace{0.5cm}
+			\vspace{0.15cm}
 		\end{minipage}
 	}%
 }
 
 \newcommand{\sidepanel}[1]{
-	\noindent\fcolorbox{margin-background-color}{margin-background-color}{
-		\begin{minipage}[t][0.83\textheight]{\firstcolumnwidth}
-			\jump[1]
-			\begin{adjustwidth}{0.3cm}{0cm}
-				#1
-			\end{adjustwidth}
-		\end{minipage}
+	\fcolorbox{margin-background-color}{margin-background-color}{%
+		\begin{minipage}[t][0.87\textheight]{\firstcolumnwidth}%
+			\jump[1]%
+			\begin{adjustwidth}{0.3cm}{0cm}%
+				#1%
+			\end{adjustwidth}%
+		\end{minipage}%
 	}%
 }
 
 \newcommand{\mainpanel}[1]{
-	\renewcommand{\leftspace}{0cm}
-	\begin{minipage}[t][0.83\textheight]{\secondcolumnwidth}
-		#1
+	\renewcommand{\leftspace}{0cm}%
+	\begin{minipage}[t][0.87\textheight]{\secondcolumnwidth}%
+		#1%
 	\end{minipage}%
 }
 
