@@ -1,0 +1,135 @@
+% LaTeX engine: XeLaTeX
+\documentclass{resume}
+
+\begin{document}
+
+\header{${{ title }}$\\${{ subtitle }}$}
+
+\sidepanel{
+	\contact{${{ contactTile }}$}{
+		\iconentry{location}{${{ addressTitle }}$}{${{ addressContent }}$}
+
+		\bigjump
+		\iconentry{phone}{${{ phoneNumberTitle }}$}{\link{tel:${{ phoneNumberCompactContent }}$}{${{ phoneNumberLongContent }}$}}
+
+		\bigjump
+		\iconentry{email}{${{ emailTitle }}$}{\link{mailto:${{ emailRealContent }}$}{${{ emailDisplayContent }}$}}
+
+		\bigjump
+		\iconentry{linkedin}{${{ linkedInTitle }}$}{\link{${{ linkedInRealContent }}$}{${{ linkedInDisplayContent }}$}}
+
+		\bigjump
+		\iconentry{skype}{${{ skypeTitle }}$}{${{ skypeContent }}$}
+
+		\bigjump
+		\iconentry{github}{${{ githubTitle }}$}{\link{${{ githubRealContent }}$}{${{ githubDisplayContent }}$}}
+	}
+
+	\languages{${{ languagesTile }}$}{
+		\iconentry{flag-fr}{${{ frenchTile }}$}{${{ frenchContent }}$}
+
+		\bigjump
+		\iconentry{flag-ca}{${{ englishTile }}$}{${{ englishContent }}$}
+
+		\bigjump
+		\iconentry{flag-es}{${{ spanishTile }}$}{${{ spanishContent }}$}
+	}
+
+	\interests{${{ interestsTitle }}$}{
+		\firstwindowicon{running}{\entrydescription{${{ running }}$}}
+
+		\jump
+		\firstwindowicon{write}{\entrydescription{${{ writing }}$}}
+
+		\jump
+		\firstwindowicon{computer}{\entrydescription{${{ coding }}$}}
+	}
+	\null%
+	\vfill%
+}%
+\hfill
+\mainpanel{
+	\displomas{${{ diplomas }}$}{
+		\entrytitle{${{ mastersDegreeTitle }}$}
+		\entrydate{${{ mastersDegreeDate }}$}
+		\entrydescription{${{ mastersDegreeDescription }}$}
+		
+		\jump
+		\entrytitle{${{ polytechTitle }}$}
+		\entrydate{${{ polytechDate }}$}
+		\entrydescription{${{ polytechDescription }}$}
+
+		\jump
+		\entrytitle{${{ bachelorsDegreeTitle }}$}
+		\entrydate{${{ bachelorsDegreeDate }}$}
+		\entrydescription{${{ bachelorsDegreeDescription }}$}
+	}
+
+	\work{${{ professionalExperiencesTitle }}$}{
+		\entrytitle{${{ cnrsTitle }}$}
+		\entrydescription{${{ cnrsSubtitle }}$}
+		\entrydate{${{ cnrsDate }}$}
+		\entrydescription{${{ cnrsDescription }}$
+
+			\begin{itemize}
+				\item ${{ cnrsItem1 }}$
+				\item ${{ cnrsItem2 }}$
+			\end{itemize}
+		}
+
+		\jump
+		\entrytitle{${{ solutecTitle }}$}
+		\entrydescription{${{ solutecSubtitle }}$}
+		\entrydate{${{ solutecDate }}$}
+		\entrydescription{${{ solutecDescription }}$
+
+			\begin{itemize}
+				\item ${{ solutecItem1 }}$
+				\item ${{ solutecItem2 }}$
+				\item ${{ solutecItem3 }}$
+				\item ${{ solutecItem4 }}$
+			\end{itemize}
+		}
+
+		\jump
+		\entrytitle{${{ mcMasterTitle }}$}
+		\entrydescription{${{ mcMasterSubtitle }}$}
+		\entrydate{${{ mcMasterDate }}$}
+		\entrydescription{
+			${{ mcMasterDescription }}$
+
+			\begin{itemize}
+				\item ${{ mcMasterItem1 }}$
+				\item ${{ mcMasterItem2 }}$
+				\item ${{ mcMasterItem3 }}$
+			\end{itemize}
+		}
+
+		\jump
+		\entrytitle{${{ stTitle }}$}
+		\entrydescription{${{ stSubtitle }}$}
+		\entrydate{${{ stDate }}$}
+		\entrydescription{
+			${{ stDescription }}$
+
+			\begin{itemize}
+				\item ${{ stItem1 }}$
+			\end{itemize}
+		}
+	}
+
+	\skills{${{ skillsTitle }}$}{
+		\entrytitle{${{ programmingTitle }}$}
+		\entrydescription{
+			\begin{itemize}
+				\item ${{ programmingItem1 }}$
+				\item ${{ programmingItem2 }}$
+				\item ${{ programmingItem3 }}$
+			\end{itemize}
+		}
+	}
+
+	%\cvfootnote{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}
+}
+
+\end{document}

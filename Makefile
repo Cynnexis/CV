@@ -6,8 +6,8 @@ ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
 ALL_GENERATED_48_PNG := images/cv48.png images/flag-ca48.png images/flag-fr48.png
 ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENERATED_16_PNG) $(ALL_GENERATED_48_PNG)
+L10N_FILES := $(wildcard l10n/*.json)
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
-ALL_CV := cv.en.pdf cv.fr.pdf
 
 .PHONY: help all clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv
 
@@ -27,19 +27,31 @@ help:
 	@echo "  docker-build - Build the Docker image from the 'Dockerfile'."
 	@echo "  docker-rmi   - Remove the build Docker image."
 	@echo "  docker-kill  - Stop and remove all containers, dangling images and unused networks and volumes. Be careful when executing this command!"
-	@echo "  cv.en.pdf    - Generate the resume in English, as a PDF."
-	@echo "  cv.fr.pdf    - Generate the resume in French, as a PDF."
-	@echo "  cv.en.docx   - Generate the resume in English, as a DOCX file."
-	@echo "  cv.fr.docx   - Generate the resume in French, as a DOCX file."
+	@echo "  cv.%.pdf     - Generate the resume in the language specified by %, as a PDF."
+	@echo "  cv.%.docx    - Generate the resume in the language specified by %, as a DOCX file."
 	@echo ''
 
-all: $(ALL_CV)
+all:
+	@set -euo pipefail
+	# Extract only the languages
+	while IFS= read -r -d '' l10n_file; do
+		language="$$(basename "$$l10n_file" .json)"
+
+		# Call MAKE
+		$(MAKE) "cv.$$language.pdf"
+	done < <(find l10n/ -type f -iname '*.json' -print0)
 
 clean: clean-build clean-pdf clean-png
 
 clean-build:
+	@set -euo pipefail
 	rm -f *.aux *.auxlock *.bbl *.blg *.fdb_latexmk *.fls *.lof *.lol *.lot *.out *.synctex *.synctex.gz *.pdfsync *.toc *.4ct *.4tc *.dvi *.idv *.lg *.tmp *.xref *.xdv *.log *.pdf_tex
 	rm -rf _minted-*/
+	# Remove generated .tex files
+	while IFS= read -r -d '' l10n_file; do
+		language="$$(basename "$$l10n_file" .json)"
+		rm -f "cv.$$language.tex"
+	done < <(find l10n/ -type f -iname '*.json' -print0)
 
 clean-pdf:
 	rm -f *.pdf
@@ -99,15 +111,22 @@ $(ALL_GENERATED_48_PNG):
 
 png: $(ALL_GENERATED_PNG)
 
+# GENERATE TEX FILES
+
+cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
+	@set -euo pipefail
+	if [[ "$@" = "cv.template.tex" ]]; then
+		exit 0
+	fi
+
+	python3 cv_generator.py
+
 # GENERATE PDF
 
-cv.en.pdf: cv.en.tex $(TEX_DEPENDENCIES)
-cv.fr.pdf: cv.fr.tex $(TEX_DEPENDENCIES)
-
-$(ALL_CV):
+cv.%.pdf: cv.%.tex $(TEX_DEPENDENCIES)
 	docker run --name="latex-make-$@" --rm -v "$$(pwd):/latex" $(DOCKER_IMAGE) make $<
 
-cv: $(ALL_CV)
+cv: all
 
 # GENERATE DOCX
 

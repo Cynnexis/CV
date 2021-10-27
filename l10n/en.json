@@ -1,0 +1,97 @@
+{
+	"title": "Engineer in Computer Science",
+	"subtitle": "Research assistant",
+
+
+	"contactTile": "Contact",
+
+	"addressTitle": "Address",
+	"addressContent": "1 Impasse Pommier, 69003 Lyon, FRANCE",
+
+	"phoneNumberTitle": "Phone Number",
+	"phoneNumberCompactContent": "+33751648450",
+	"phoneNumberLongContent": "+33 7 51 64 84 50",
+
+	"emailTitle": "Email",
+	"emailRealContent": "Valentin.berger38@gmail.com",
+	"emailDisplayContent": "Valentin.berger38@gmail.com",
+
+	"linkedInTitle": "LinkedIn",
+	"linkedInRealContent": "https://www.linkedin.com/in/valentinberger/",
+	"linkedInDisplayContent": "linkedin.com/in/valentinberger",
+
+	"skypeTitle": "Skype",
+	"skypeContent": "valentin.berger",
+
+	"githubTitle": "GitHub",
+	"githubRealContent": "https://github.com/Cynnexis",
+	"githubDisplayContent": "https://github.com/Cynnexis",
+
+
+	"languagesTile": "Languages",
+	"frenchTile": "French",
+	"frenchContent": "Native language",
+
+	"englishTile": "English",
+	"englishContent": "Fluent, C1 Level (CEFR),\nTOEIC 955/990",
+
+	"spanishTile": "Spanish",
+	"spanishContent": "Basic command",
+
+
+	"interestsTitle": "Interests",
+	"running": "Running",
+	"writing": "Writing",
+	"coding": "Coding",
+
+
+	"diplomas": "Diplomas",
+
+	"mastersDegreeTitle": "Master's Degree in Artificial Intelligence",
+	"mastersDegreeDate": "2019 -- 2020",
+	"mastersDegreeDescription": "Université Lyon 1, double degree with Computer Engineering curriculum",
+	"polytechTitle": "Computer Science & Engineering Degree at Polytech Lyon",
+	"polytechDate": "2017 -- 2020",
+	"polytechDescription": "Polytech Lyon, in France",
+	"bachelorsDegreeTitle": "First and second year of a Bachelor's Degree in Computer Science and\nMathematics",
+	"bachelorsDegreeDate": "2015 -- 2017",
+	"bachelorsDegreeDescription": "Université Grenoble Alpes, two years of preparatory class for Polytech",
+
+	"professionalExperiencesTitle": "Professional Experiences",
+	"cnrsTitle": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
+	"cnrsSubtitle": "Institute specialized in neurosciences",
+	"cnrsDate": "November 2020 -- present",
+	"cnrsDescription": "Research assistant engineer.",
+	"cnrsItem1": "Developed a web architecture and a mobile application in Flutter for an interactive survey,",
+	"cnrsItem2": "Point cloud processing in 3D.",
+
+	"solutecTitle": "Solutec Lyon",
+	"solutecSubtitle": "Digital service company specialized in consulting",
+	"solutecDate": "March 2020 to July 2020 -- 5 months",
+	"solutecDescription": "Research & Development internship. The mission was to build a Chatbot for the Solutec employees to answers their questions about the organization.",
+	"solutecItem1": "Natural language processing using spaCy,",
+	"solutecItem2": "Created dense, convolutional and recursive neural networks with TensorFlow,",
+	"solutecItem3": "Deployed a MongoDB database using Docker,",
+	"solutecItem4": "Developed a CI/CD pipeline on GitLab.",
+	
+	"mcMasterTitle": "McMaster University",
+	"mcMasterSubtitle": "McMaster is a university located in Hamilton, Canada.",
+	"mcMasterDate": "September 2018 to January 2019 -- 5 months",
+	"mcMasterDescription": "Research internship in Mathematical Optimization.\nThe goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
+	"mcMasterItem1": "Wrote a multiperiod model,",
+	"mcMasterItem2": "Understand how mathematical optimizers work,",
+	"mcMasterItem3": "Contributed to a scientific journal.",
+	
+	"stTitle": "STMicroelectronics Crolles",
+	"stSubtitle": "A manufacturer of semiconductors",
+	"stDate": "July and August 2017 -- 2 months",
+	"stDescription": "Temporary job as operator in clean-room",
+	"stItem1": "Maintained machines in the Lithography area.",
+
+
+	"skillsTitle": "Skills",
+	"programmingTitle": "Programming Languages, Scripts and Frameworks",
+	"programmingItem1": "C, C++, C#, Java, Kotlin, Dart, Python and LaTeX",
+	"programmingItem2": "HTML5, CCS3, JavaScript, OracleSQL, R, Matlab and GAMS",
+	"programmingItem3": "Good command of Android Native and TensorFlow and Flutter"
+}
