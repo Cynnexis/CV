@@ -55,6 +55,8 @@
 			\entrytitle{${{ item.title }}$}
 			\entrydate{${{ item.date }}$}
 			\entrydescription{${{ item.description }}$}
+		${{ @join }}$
+			\jump{}
 		${{ @endfor }}$
 	}
 
@@ -71,6 +73,8 @@
 				${{ @endfor }}$
 				\end{itemize}
 			}
+		${{ @join }}$
+				\jump{}
 		${{ @endfor }}$
 	}
 

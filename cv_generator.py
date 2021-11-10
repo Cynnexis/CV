@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-import copy
-import os
-import sys
-import re
-import json
 import argparse
+import copy
+import json
+import os
+import re
+import sys
+from typing import Dict, List, Optional, Union
+
 from tqdm import tqdm
 from typeguard import typechecked
-from typing import Dict, List, Optional, Union, Tuple
 
 DEFAULT_TEMPLATE_FILE: str = "cv.template.tex"
 DEFAULT_TRANSLATION_DIR: str = "l10n"
@@ -15,6 +16,7 @@ DEFAULT_TRANSLATION_DIR: str = "l10n"
 translation_filename_pattern: re.Pattern = re.compile(r"^[a-z]{2}\.json$", re.IGNORECASE)
 placeholder_pattern: re.Pattern = re.compile(r"\${{\s*([a-z0-9_.]+)\s*}}\$", re.IGNORECASE)
 control_for_pattern: re.Pattern = re.compile(r"\${{\s*@for\s+([a-z0-9_]+)\s+in\s+([a-z0-9_.]+)\s*}}\$", re.IGNORECASE)
+control_join_pattern: re.Pattern = re.compile(r"\${{\s*@join\s*}}\$", re.IGNORECASE)
 control_endfor_pattern: re.Pattern = re.compile(r"\${{\s*@endfor\s*}}\$", re.IGNORECASE)
 new_line_pattern: re.Pattern = re.compile(r"\r?\n")
 instruction_placeholder_possible_chars: List[str] = [
@@ -74,13 +76,13 @@ def main(template_file: str, translation_dir: str) -> None:
 def parse_template(template: str, translation_map: Dict[str, str]) -> str:
 	template = parse_for_loop(template, translation_map)
 	# Search for for-loop flow control, beginning with the first one
-	for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(template)
-	for_loop: Optional[Tuple[re.Match, re.Match]] = for_loops[0] if len(for_loops) > 0 else None
+	for_loops: List[ForLoop] = search_for_loops(template)
+	for_loop: Optional[ForLoop] = for_loops[0] if len(for_loops) > 0 else None
 	while for_loop is not None:
 		template = parse_for_loop(template, translation_map)
 
 		# Search for the next match
-		for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(template)
+		for_loops: List[ForLoop] = search_for_loops(template)
 		for_loop = for_loops[0] if len(for_loops) > 0 else None
 
 	# Search for placeholder variables
@@ -100,13 +102,13 @@ def parse_for_loop(template: str, translation_map: Dict[str, str]) -> str:
 	placeholders to be replaced, please call `fill_placeholders` after.
 	"""
 	# Search for for-loop flow control, beginning with the first one
-	for_loop: Optional[Tuple[re.Match, re.Match]] = search_for_loops(template)[0]
+	for_loop: Optional[ForLoop] = search_for_loops(template)[0]
 	if for_loop is None:
 		# If none, it means that there is no for-loop in `template`
 		return template
 
 	# Get the starting statement
-	for_loop_var = for_loop[0]
+	for_loop_var = for_loop.starting_statement
 	element_name = for_loop_var.group(1)
 	placeholder_name = for_loop_var.group(2)
 	if element_name == placeholder_name:
@@ -119,10 +121,10 @@ def parse_for_loop(template: str, translation_map: Dict[str, str]) -> str:
 		raise ValueError(f"The placeholder variable ${{{{ {placeholder_name} }}}}$ is not a list, it is not iterable.")
 
 	# Get the ending statement
-	endfor_var: re.Match = for_loop[1]
+	endfor_var: re.Match = for_loop.ending_statement
 
 	# Extract the body of the loop
-	loop_body: str = template[for_loop_var.end():endfor_var.start()]
+	loop_body: str = template[for_loop.body_slice]
 
 	# The body will be replaced by the following variable, that will contain the final result of the body
 	filled_body: str = ''
@@ -147,13 +149,12 @@ def parse_for_loop(template: str, translation_map: Dict[str, str]) -> str:
 		# parsed
 		loop_body_scope: Dict[str, str] = {**fields_map, **translation_map}
 
-		# TODO: Make the join customizable by the template
 		# Join with a special command
-		if len(filled_body) != 0:
-			filled_body += f"{get_indent(loop_body)[0]}\\jump\n"
+		if len(filled_body) != 0 and for_loop.join is not None:
+			filled_body += for_loop.join
 
 		# Search for nested for-loops in `loop_body`
-		nested_for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(loop_body)
+		nested_for_loops: List[ForLoop] = search_for_loops(loop_body)
 		if len(nested_for_loops) > 0:
 			current_loop_body = parse_for_loop(loop_body, loop_body_scope)
 		else:
@@ -211,19 +212,18 @@ def str_replace(string: str, substring: str, start: int, end: int) -> str:
 
 
 @typechecked
-def search_for_loops(string: str) -> List[Tuple[re.Match, re.Match]]:
+def search_for_loops(string: str) -> List['ForLoop']:
 	"""
 	Search for all for-loops (nested or not) in the given string.
 	:param string: The string to parse.
-	:return: Return a list of tuple, where the first elements of each tuple are the match of the for statement, and the
-	second elements their respective closing statement.
+	:return: Return a list of `ForLoop`.
 	"""
 	# Search for all for-loop statements
 	for_loops: List[re.Match] = list(control_for_pattern.finditer(string))
 	# Search for all ending statements
 	end_loops: List[re.Match] = list(control_endfor_pattern.finditer(string))
 	# Declare the list that will be returned
-	for_loop_statements: List[Tuple[re.Match, re.Match]] = []
+	for_loop_statements: List[ForLoop] = []
 	# Also declare a list of all ending statements that have been associated to a starting statements
 	associated_ending_statements: List[re.Match] = []
 
@@ -248,7 +248,36 @@ def search_for_loops(string: str) -> List[Tuple[re.Match, re.Match]]:
 		if lowest_ending_statement is None:
 			raise ValueError(f"Couldn't find an ending statement for the following line:\n{for_loop_var.group(0)}")
 
-		for_loop_statements.append((for_loop_var, lowest_ending_statement))
+		# Now, we have an association between for_loop_var (starting statement) and lowest_ending_statement (ending statement)
+		# Get the body of the for-loop
+		body_ending_index: int = lowest_ending_statement.start()
+		loop_body: str = string[for_loop_var.end():body_ending_index]
+
+		# Search for a join statement in the for-loop body
+		join: Optional[str] = None
+		join_loop_var: Optional[re.Match] = None
+		join_loops: List[re.Match] = list(control_join_pattern.finditer(loop_body))
+		if len(join_loops) > 0:
+			# A join statement has been found!
+			if len(join_loops) != 1:
+				raise ValueError(f"Expected 0 or 1 @join statement in for loop, got {len(join_loops)}:\n"
+									f"{string[for_loop_var.start():lowest_ending_statement.end()]}")
+
+			join_loop_var = join_loops[0]
+			# Extract the body between the loop statement and the ending
+			join = string[for_loop_var.end() + join_loop_var.end():lowest_ending_statement.start()]
+			# Update the index where the body stops: it is now just before the join statement instead of the ending statement
+			body_ending_index = for_loop_var.end() + join_loop_var.start()
+
+		for_loop_statements.append(
+			ForLoop(
+				starting_statement=for_loop_var,
+				body_starting_index=for_loop_var.end(),
+				ending_statement=lowest_ending_statement,
+				body_ending_index=body_ending_index,
+				join_statement=join_loop_var,
+				join=join,
+			))
 		# Register the associated
 		associated_ending_statements.append(lowest_ending_statement)
 
@@ -329,6 +358,46 @@ def sanitize_for_latex(string: str) -> str:
 		string = string.replace(key, value)
 
 	return string
+
+
+class ForLoop:
+	"""
+	Class that represents a for-loop flow structure.
+	"""
+
+	@typechecked
+	def __init__(self,
+					starting_statement: re.Match,
+					body_starting_index: int,
+					ending_statement: re.Match,
+					body_ending_index: int,
+					join_statement: Optional[re.Match] = None,
+					join: Optional[str] = None):
+		self.starting_statement = starting_statement
+		self.body_starting_index = body_starting_index
+		self.ending_statement = ending_statement
+		self.body_ending_index = body_ending_index
+		self.join_statement = join_statement
+		self.join = join
+		assert self.body_starting_index < self.body_ending_index
+
+	@property
+	def body_slice(self) -> slice:
+		return slice(self.body_starting_index, self.body_ending_index)
+
+	def __len__(self) -> int:
+		return self.body_ending_index - self.body_starting_index
+
+	def __str__(self) -> str:
+		content: str = f"{self.starting_statement.group(0)}\n\t...\n"
+		if self.join_statement is not None:
+			content += f"{self.join_statement.group(0)}\n\t...\n"
+
+		content += f"{self.ending_statement.group(0)}"
+		return content
+
+	def __repr__(self) -> str:
+		return f"ForLoop{{body_starting_index: {self.body_starting_index}, ending_statement: {self.ending_statement}, join: {self.join}}}"
 
 
 if __name__ == "__main__":
