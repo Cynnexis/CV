@@ -46,16 +46,23 @@
 
 
 	"diplomas": "Diplomas",
-
-	"mastersDegreeTitle": "Master's Degree in Artificial Intelligence",
-	"mastersDegreeDate": "2019 -- 2020",
-	"mastersDegreeDescription": "Université Lyon 1, double degree with Computer Engineering curriculum",
-	"polytechTitle": "Computer Science & Engineering Degree at Polytech Lyon",
-	"polytechDate": "2017 -- 2020",
-	"polytechDescription": "Polytech Lyon, in France",
-	"bachelorsDegreeTitle": "First and second year of a Bachelor's Degree in Computer Science and\nMathematics",
-	"bachelorsDegreeDate": "2015 -- 2017",
-	"bachelorsDegreeDescription": "Université Grenoble Alpes, two years of preparatory class for Polytech",
+	"diplomaItems": [
+		{
+			"title": "Master's Degree in Artificial Intelligence",
+			"date": "2019 -- 2020",
+			"description": "Université Lyon 1, double degree with Computer Engineering curriculum"
+		},
+		{
+			"title": "Computer Science & Engineering Degree at Polytech Lyon",
+			"date": "2017 -- 2020",
+			"description": "Polytech Lyon, in France"
+		},
+		{
+			"title": "First and second year of a Bachelor's Degree in Computer Science and\nMathematics",
+			"date": "2015 -- 2017",
+			"description": "Université Grenoble Alpes, two years of preparatory class for Polytech"
+		}
+	],
 
 	"professionalExperiencesTitle": "Professional Experiences",
 	"cnrsTitle": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",

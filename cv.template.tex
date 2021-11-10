@@ -50,19 +50,11 @@
 \hfill
 \mainpanel{
 	\displomas{${{ diplomas }}$}{
-		\entrytitle{${{ mastersDegreeTitle }}$}
-		\entrydate{${{ mastersDegreeDate }}$}
-		\entrydescription{${{ mastersDegreeDescription }}$}
-		
-		\jump
-		\entrytitle{${{ polytechTitle }}$}
-		\entrydate{${{ polytechDate }}$}
-		\entrydescription{${{ polytechDescription }}$}
-
-		\jump
-		\entrytitle{${{ bachelorsDegreeTitle }}$}
-		\entrydate{${{ bachelorsDegreeDate }}$}
-		\entrydescription{${{ bachelorsDegreeDescription }}$}
+		${{ @for item in diplomaItems }}$
+			\entrytitle{${{ item.title }}$}
+			\entrydate{${{ item.date }}$}
+			\entrydescription{${{ item.description }}$}
+		${{ @endfor }}$
 	}
 
 	\work{${{ professionalExperiencesTitle }}$}{

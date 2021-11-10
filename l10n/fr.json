@@ -46,16 +46,23 @@
 
 
 	"diplomas": "Diplômes",
-
-	"mastersDegreeTitle": "Master en Intelligence Artificielle",
-	"mastersDegreeDate": "2019 -- 2020",
-	"mastersDegreeDescription": "Université Lyon 1, double-diplôme avec Polytech Lyon",
-	"polytechTitle": "Diplôme d'Ingénieur à Polytech Lyon en Informatique",
-	"polytechDate": "2017 -- 2020",
-	"polytechDescription": "Polytech Lyon, cycle ingénieur",
-	"bachelorsDegreeTitle": "L1 et L2 Mathématiques-Informatique",
-	"bachelorsDegreeDate": "2015 -- 2017",
-	"bachelorsDegreeDescription": "Université Grenoble Alpes, classe préparatoire avec Polytech Grenoble",
+	"diplomaItems": [
+		{
+			"title": "Master en Intelligence Artificielle",
+			"date": "2019 -- 2020",
+			"description": "Université Lyon 1, double-diplôme avec Polytech Lyon"
+		},
+		{
+			"title": "Diplôme d'Ingénieur à Polytech Lyon en Informatique",
+			"date": "2017 -- 2020",
+			"description": "Polytech Lyon, cycle ingénieur"
+		},
+		{
+			"title": "L1 et L2 Mathématiques-Informatique",
+			"date": "2015 -- 2017",
+			"description": "Université Grenoble Alpes, classe préparatoire avec Polytech Grenoble"
+		}
+	],
 
 	"professionalExperiencesTitle": "Expériences Professionnelles",
 	"cnrsTitle": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
