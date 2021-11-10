@@ -58,43 +58,57 @@
 			"description": "Polytech Lyon, in France"
 		},
 		{
-			"title": "First and second year of a Bachelor's Degree in Computer Science and\nMathematics",
+			"title": "First and second year of a Bachelor's Degree in Computer Science and Mathematics",
 			"date": "2015 -- 2017",
 			"description": "Université Grenoble Alpes, two years of preparatory class for Polytech"
 		}
 	],
 
 	"professionalExperiencesTitle": "Professional Experiences",
-	"cnrsTitle": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
-	"cnrsSubtitle": "Institute specialized in neurosciences",
-	"cnrsDate": "November 2020 -- present",
-	"cnrsDescription": "Research assistant engineer.",
-	"cnrsItem1": "Developed a web architecture and a mobile application in Flutter for an interactive survey,",
-	"cnrsItem2": "Point cloud processing in 3D.",
-
-	"solutecTitle": "Solutec Lyon",
-	"solutecSubtitle": "Digital service company specialized in consulting",
-	"solutecDate": "March 2020 to July 2020 -- 5 months",
-	"solutecDescription": "Research & Development internship. The mission was to build a Chatbot for the Solutec employees to answers their questions about the organization.",
-	"solutecItem1": "Natural language processing using spaCy,",
-	"solutecItem2": "Created dense, convolutional and recursive neural networks with TensorFlow,",
-	"solutecItem3": "Deployed a MongoDB database using Docker,",
-	"solutecItem4": "Developed a CI/CD pipeline on GitLab.",
-	
-	"mcMasterTitle": "McMaster University",
-	"mcMasterSubtitle": "McMaster is a university located in Hamilton, Canada.",
-	"mcMasterDate": "September 2018 to January 2019 -- 5 months",
-	"mcMasterDescription": "Research internship in Mathematical Optimization.\nThe goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
-	"mcMasterItem1": "Wrote a multiperiod model,",
-	"mcMasterItem2": "Understand how mathematical optimizers work,",
-	"mcMasterItem3": "Contributed to a scientific journal.",
-	
-	"stTitle": "STMicroelectronics Crolles",
-	"stSubtitle": "A manufacturer of semiconductors",
-	"stDate": "July and August 2017 -- 2 months",
-	"stDescription": "Temporary job as operator in clean-room",
-	"stItem1": "Maintained machines in the Lithography area.",
-
+	"professionalExperienceItems": [
+		{
+			"title": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
+			"subtitle": "Institute specialized in neurosciences",
+			"date": "November 2020 -- present",
+			"description": "Research assistant engineer.",
+			"details": [
+				"Developed a web architecture and a mobile application in Flutter for an interactive survey,",
+				"Point cloud processing in 3D."
+			]
+		},
+		{
+			"title": "Solutec Lyon",
+			"subtitle": "Digital service company specialized in consulting",
+			"date": "March 2020 to July 2020 -- 5 months",
+			"description": "Research & Development internship. The mission was to build a Chatbot for the Solutec employees to answers their questions about the organization.",
+			"details": [
+				"Natural language processing using spaCy,",
+				"Created dense, convolutional and recursive neural networks with TensorFlow,",
+				"Deployed a MongoDB database using Docker,",
+				"Developed a CI/CD pipeline on GitLab."
+			]
+		},
+		{
+			"title": "McMaster University",
+			"subtitle": "McMaster is a university located in Hamilton, Canada.",
+			"date": "September 2018 to January 2019 -- 5 months",
+			"description": "Research internship in Mathematical Optimization.\nThe goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
+			"details": [
+				"Wrote a multiperiod model,",
+				"Understand how mathematical optimizers work,",
+				"Contributed to a scientific journal."
+			]
+		},
+		{
+			"title": "STMicroelectronics Crolles",
+			"subtitle": "A manufacturer of semiconductors",
+			"date": "July and August 2017 -- 2 months",
+			"description": "Temporary job as operator in clean-room",
+			"details": [
+				"Maintained machines in the Lithography area."
+			]
+		}
+	],
 
 	"skillsTitle": "Skills",
 	"programmingTitle": "Programming Languages, Scripts and Frameworks",

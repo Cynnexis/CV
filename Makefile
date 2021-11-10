@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 DOCKER_IMAGE=cynnexis/cv
 DOCKER_INKSCAPE := docker run --name="inkscape-generate-png" --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape --export-overwrite
-ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profile.png images/email.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/space.png images/work.png images/write.png
+ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profile.png images/email.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/work.png images/write.png
 ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
 ALL_GENERATED_48_PNG := images/cv48.png images/flag-ca48.png images/flag-fr48.png

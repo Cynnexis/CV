@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import copy
 import os
 import sys
 import re
@@ -6,7 +7,7 @@ import json
 import argparse
 from tqdm import tqdm
 from typeguard import typechecked
-from typing import Dict, List, Iterator, Optional
+from typing import Dict, List, Optional, Union, Tuple
 
 DEFAULT_TEMPLATE_FILE: str = "cv.template.tex"
 DEFAULT_TRANSLATION_DIR: str = "l10n"
@@ -29,7 +30,8 @@ instruction_placeholder_possible_chars: List[str] = [
 
 @typechecked
 def main(template_file: str, translation_dir: str) -> None:
-	template = ''
+	# noinspection PyUnusedLocal
+	template: str = ''
 	with open(template_file, mode='r', encoding='utf-8') as f:
 		template = f.read()
 
@@ -70,55 +72,16 @@ def main(template_file: str, translation_dir: str) -> None:
 
 
 def parse_template(template: str, translation_map: Dict[str, str]) -> str:
+	template = parse_for_loop(template, translation_map)
 	# Search for for-loop flow control, beginning with the first one
-	for_loop_var: Optional[re.Match] = control_for_pattern.search(template)
-	while for_loop_var is not None:
-		element_name = for_loop_var.group(1)
-		placeholder_name = for_loop_var.group(2)
-		if element_name == placeholder_name:
-			raise ValueError(f"Error in for-loop: The name of the item cannot be the same as the iterator.")
+	for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(template)
+	for_loop: Optional[Tuple[re.Match, re.Match]] = for_loops[0] if len(for_loops) > 0 else None
+	while for_loop is not None:
+		template = parse_for_loop(template, translation_map)
 
-		if placeholder_name not in translation_map:
-			raise ValueError(f"The placeholder variable ${{{{ {placeholder_name} }}}}$ is unbound.")
-
-		if type(translation_map[placeholder_name]) != list:
-			raise ValueError(
-				f"The placeholder variable ${{{{ {placeholder_name} }}}}$ is not a list, it is not iterable.")
-
-		# TODO: The method used for detected the end of a for-loop doesn't allow nested for-loops
-		# Get the for-loop end
-		endfor_var: Optional[re.Match] = control_endfor_pattern.search(template[for_loop_var.end():])
-		if endfor_var is None:
-			raise ValueError(f"The flow control {for_loop_var.group(0)} has no ending.")
-
-		# Extract the body of the loop
-		loop_body: str = template[for_loop_var.end():for_loop_var.end() + endfor_var.start()]
-
-		# The body will be replaced by the following variable, that will contain the final result of the body
-		filled_body: str = ''
-
-		element: dict
-		for element in translation_map[placeholder_name]:
-			if type(element) != dict:
-				raise ValueError(
-					f"The placeholder variable ${{{{ {placeholder_name} }}}}$ does not contain JSON object, it cannot be parsed."
-				)
-
-			# Construct list of possible fields for the element, and associate them to their respective value
-			fields_map: Dict[str, str] = {}
-			for key, value in element.items():
-				fields_map[f"{element_name}.{key}"] = value
-
-			# TODO: Make the join customizable by the template
-			# Join with a special command
-			if len(filled_body) != 0:
-				filled_body += f"{get_indent(loop_body)[0]}\\jump\n"
-
-			filled_body += fill_placeholders(loop_body, fields_map)
-
-		template = str_replace(template, filled_body, for_loop_var.start(), for_loop_var.end() + endfor_var.end())
 		# Search for the next match
-		for_loop_var = control_for_pattern.search(template)
+		for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(template)
+		for_loop = for_loops[0] if len(for_loops) > 0 else None
 
 	# Search for placeholder variables
 	template = fill_placeholders(template, translation_map)
@@ -126,7 +89,93 @@ def parse_template(template: str, translation_map: Dict[str, str]) -> str:
 	return template
 
 
+def parse_for_loop(template: str, translation_map: Dict[str, str]) -> str:
+	"""
+	Parse the for-loop in the given template, using the given translation dictionary, that maps placeholder names to
+	their respective values.
+	:param template: The template containing placeholders and the for-loop. Only the first for-loop will be parsed. If
+	the first for-loop contains a nested for-loop, it will be treated as well using recursive calls.
+	:param translation_map: The mapping between the placeholder names and their values.
+	:return: Return the template but with its first for-loop (and nested loops) parsed. Note that if you want the
+	placeholders to be replaced, please call `fill_placeholders` after.
+	"""
+	# Search for for-loop flow control, beginning with the first one
+	for_loop: Optional[Tuple[re.Match, re.Match]] = search_for_loops(template)[0]
+	if for_loop is None:
+		# If none, it means that there is no for-loop in `template`
+		return template
+
+	# Get the starting statement
+	for_loop_var = for_loop[0]
+	element_name = for_loop_var.group(1)
+	placeholder_name = for_loop_var.group(2)
+	if element_name == placeholder_name:
+		raise ValueError(f"Error in for-loop: The name of the item cannot be the same as the iterator.")
+
+	if placeholder_name not in translation_map:
+		raise ValueError(f"The placeholder variable ${{{{ {placeholder_name} }}}}$ is unbound.")
+
+	if type(translation_map[placeholder_name]) != list:
+		raise ValueError(f"The placeholder variable ${{{{ {placeholder_name} }}}}$ is not a list, it is not iterable.")
+
+	# Get the ending statement
+	endfor_var: re.Match = for_loop[1]
+
+	# Extract the body of the loop
+	loop_body: str = template[for_loop_var.end():endfor_var.start()]
+
+	# The body will be replaced by the following variable, that will contain the final result of the body
+	filled_body: str = ''
+
+	element: dict
+	for element in translation_map[placeholder_name]:
+		if type(element) != dict and type(element) != str:
+			raise ValueError(
+				f"The placeholder variable ${{{{ {placeholder_name} }}}}$ does not contain JSON object or a string, it cannot be parsed."
+			)
+
+		# Construct list of possible fields for the element, and associate them to their respective value
+		fields_map: Dict[str, str] = {}
+		if type(element) == dict:
+			for key, value in element.items():
+				fields_map[f"{element_name}.{key}"] = value
+		else: # if element is a string
+			# noinspection PyTypeChecker
+			fields_map[element_name] = element
+
+		# Define the scope of the loop body: It contains both the outer scope, plus the placeholder of the list being
+		# parsed
+		loop_body_scope: Dict[str, str] = {**fields_map, **translation_map}
+
+		# TODO: Make the join customizable by the template
+		# Join with a special command
+		if len(filled_body) != 0:
+			filled_body += f"{get_indent(loop_body)[0]}\\jump\n"
+
+		# Search for nested for-loops in `loop_body`
+		nested_for_loops: List[Tuple[re.Match, re.Match]] = search_for_loops(loop_body)
+		if len(nested_for_loops) > 0:
+			current_loop_body = parse_for_loop(loop_body, loop_body_scope)
+		else:
+			current_loop_body = copy.deepcopy(loop_body)
+
+		filled_body += fill_placeholders(current_loop_body, loop_body_scope)
+
+	template = str_replace(template, filled_body, for_loop_var.start(), endfor_var.end())
+
+	return template
+
+
 def fill_placeholders(template: str, translation_map: Dict[str, str]) -> str:
+	"""
+	Fill all detected placeholders in the given template, using the given translation dictionary, that maps placeholder
+	names to their respective values.
+
+	Note that this function only translates the placeholders, and not the flow controls.
+	:param template: The template containing placeholders.
+	:param translation_map: The mapping between the placeholder names and their values.
+	:return: Return the template but with all its placeholders replaced by the corresponding values.
+	"""
 	# Search for the first match in the given template
 	placeholder_var: Optional[re.Match] = placeholder_pattern.search(template)
 	while placeholder_var is not None:
@@ -162,6 +211,52 @@ def str_replace(string: str, substring: str, start: int, end: int) -> str:
 
 
 @typechecked
+def search_for_loops(string: str) -> List[Tuple[re.Match, re.Match]]:
+	"""
+	Search for all for-loops (nested or not) in the given string.
+	:param string: The string to parse.
+	:return: Return a list of tuple, where the first elements of each tuple are the match of the for statement, and the
+	second elements their respective closing statement.
+	"""
+	# Search for all for-loop statements
+	for_loops: List[re.Match] = list(control_for_pattern.finditer(string))
+	# Search for all ending statements
+	end_loops: List[re.Match] = list(control_endfor_pattern.finditer(string))
+	# Declare the list that will be returned
+	for_loop_statements: List[Tuple[re.Match, re.Match]] = []
+	# Also declare a list of all ending statements that have been associated to a starting statements
+	associated_ending_statements: List[re.Match] = []
+
+	# For all starting statement, search the corresponding ending statement by finding the nearest (left-to-right) in
+	# the string
+	for_loop_var: re.Match
+	end_loop_var: re.Match
+	# Parse the starting statement, from the end to the beginning to allow nested loops
+	for for_loop_var in reversed(for_loops):
+		lowest_ending_statement: Optional[re.Match] = None
+		lowest_distance: Union[int, float] = float('+inf')
+		# Parse the ending statement, from the beginning to the end
+		for end_loop_var in end_loops:
+			# Ignore ending statement that are already associated and that are BEFORE the starting one
+			if end_loop_var not in associated_ending_statements and for_loop_var.end() < end_loop_var.start():
+				distance = end_loop_var.end() - for_loop_var.start()
+				if distance < lowest_distance:
+					# If a lower distance is found, select it
+					lowest_distance = distance
+					lowest_ending_statement = end_loop_var
+
+		if lowest_ending_statement is None:
+			raise ValueError(f"Couldn't find an ending statement for the following line:\n{for_loop_var.group(0)}")
+
+		for_loop_statements.append((for_loop_var, lowest_ending_statement))
+		# Register the associated
+		associated_ending_statements.append(lowest_ending_statement)
+
+	# Reverse again the list to have the for-loops in the right order (from left to right)
+	return list(reversed(for_loop_statements))
+
+
+@typechecked
 def get_indent(string: str) -> str:
 	"""
 	Return the first indent string found in the given string.
@@ -192,43 +287,48 @@ def sanitize_for_latex(string: str) -> str:
 	"""
 	Sanitize the given string for LaTeX file.
 	"""
-	return string\
-              .replace("\n", "\\\\\\\\")\
-              .replace("\\n", "\\\\\\\\")\
-              .replace("á", "\\'{a}")\
-              .replace("é", "\\'{e}")\
-              .replace("í", "\\'{i}")\
-              .replace("ó", "\\'{o}")\
-              .replace("ú", "\\'{u}")\
-              .replace("ý", "\\'{y}")\
-              .replace("à", "\\`{a}")\
-              .replace("è", "\\`{e}")\
-              .replace("ì", "\\`{i}")\
-              .replace("ò", "\\`{o}")\
-              .replace("ù", "\\`{u}")\
-              .replace("â", "\\^{a}")\
-              .replace("ê", "\\^{e}")\
-              .replace("î", "\\^{i}")\
-              .replace("ô", "\\^{o}")\
-              .replace("û", "\\^{u}")\
-              .replace("Á", "\\'{A}")\
-              .replace("É", "\\'{E}")\
-              .replace("Í", "\\'{I}")\
-              .replace("Ó", "\\'{O}")\
-              .replace("Ú", "\\'{U}")\
-              .replace("Ý", "\\'{Y}")\
-              .replace("À", "\\`{A}")\
-              .replace("È", "\\`{E}")\
-              .replace("Ì", "\\`{I}")\
-              .replace("Ò", "\\`{O}")\
-              .replace("Ù", "\\`{U}")\
-              .replace("Â", "\\^{A}")\
-              .replace("Ê", "\\^{E}")\
-              .replace("Î", "\\^{I}")\
-              .replace("Ô", "\\^{O}")\
-              .replace("Û", "\\^{U}")\
-              .replace("&", "\\&")\
-              .replace("#", "\\#")
+	replace_mapping: Dict[str, str] = {
+		"\n": "\\\\\\\\",
+		"\\n": "\\\\\\\\",
+		"á": "\\'{a}",
+		"é": "\\'{e}",
+		"í": "\\'{i}",
+		"ó": "\\'{o}",
+		"ú": "\\'{u}",
+		"ý": "\\'{y}",
+		"à": "\\`{a}",
+		"è": "\\`{e}",
+		"ì": "\\`{i}",
+		"ò": "\\`{o}",
+		"ù": "\\`{u}",
+		"â": "\\^{a}",
+		"ê": "\\^{e}",
+		"î": "\\^{i}",
+		"ô": "\\^{o}",
+		"û": "\\^{u}",
+		"Á": "\\'{A}",
+		"É": "\\'{E}",
+		"Í": "\\'{I}",
+		"Ó": "\\'{O}",
+		"Ú": "\\'{U}",
+		"Ý": "\\'{Y}",
+		"À": "\\`{A}",
+		"È": "\\`{E}",
+		"Ì": "\\`{I}",
+		"Ò": "\\`{O}",
+		"Ù": "\\`{U}",
+		"Â": "\\^{A}",
+		"Ê": "\\^{E}",
+		"Î": "\\^{I}",
+		"Ô": "\\^{O}",
+		"Û": "\\^{U}",
+		"&": "\\&",
+		"#": "\\#",
+	}
+	for key, value in replace_mapping.items():
+		string = string.replace(key, value)
+
+	return string
 
 
 if __name__ == "__main__":
