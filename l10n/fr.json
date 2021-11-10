@@ -92,7 +92,7 @@
 			"title": "McMaster University",
 			"subtitle": "McMaster est une université située à Hamilton, au Canada.",
 			"date": "Septembre 2018 jusqu'à Janvier 2019 -- 5 mois",
-			"description": "Stage de recherche en Optimisation Mathématique.\nLa mission était de manipuler une formulation d'un modèle mathématique sur une raffinerie de façon à gérer les arrêts non-anticipés des machines, avec différentes durées d'arrêt.",
+			"description": "Stage de recherche en Optimisation Mathématique. La mission était de manipuler une formulation d'un modèle mathématique sur une raffinerie de façon à gérer les arrêts non-anticipés des machines, avec différentes durées d'arrêt.",
 			"details": [
 				"Formulation d'un modèle mathématique multi-périodes,",
 				"Comprendre le fonctionnement d'un optimiseur mathématique,",

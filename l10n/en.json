@@ -92,7 +92,7 @@
 			"title": "McMaster University",
 			"subtitle": "McMaster is a university located in Hamilton, Canada.",
 			"date": "September 2018 to January 2019 -- 5 months",
-			"description": "Research internship in Mathematical Optimization.\nThe goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
+			"description": "Research internship in Mathematical Optimization. The goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
 			"details": [
 				"Wrote a multiperiod model,",
 				"Understand how mathematical optimizers work,",

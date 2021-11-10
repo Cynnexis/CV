@@ -317,8 +317,8 @@ def sanitize_for_latex(string: str) -> str:
 	Sanitize the given string for LaTeX file.
 	"""
 	replace_mapping: Dict[str, str] = {
-		"\n": "\\\\\\\\",
-		"\\n": "\\\\\\\\",
+		"\n": "\\\\",
+		"\\n": "\\\\",
 		"á": "\\'{a}",
 		"é": "\\'{e}",
 		"í": "\\'{i}",
