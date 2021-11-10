@@ -119,7 +119,33 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 		exit 0
 	fi
 
-	python3 cv_generator.py
+	# Search for the Python 3 executable
+	python_exec=python3
+	if ! command -v "$$python_exec"; then
+		if command -v python; then
+			python_exec=python
+		else
+			# No executable found
+			python_exec=
+		fi
+	fi
+
+	if [[ -n "$$python_exec" ]]; then
+		# If an executable is found, check the version
+		python_version_minor=$("$$python_exec" --version | grep -oPe '^Python\s+3\.\K([0-9]+)')
+		if [[ -n $$python_version_minor && "$$python_version_minor" -lt 7 ]]; then
+			# If the version is less than 3.7, assume there is no Python executable
+			python_exec=
+		fi
+	fi
+
+	# If the python executable is found, use it to generate the CV
+	if [[ -n ]]; then
+		python3 cv_generator.py
+	else
+		# Otherwise, use Docker
+		docker run --name="python-generate-$@" -it --rm -v "$$(pwd):/cv" --workdir=/cv --entrypoint=bash python:3.7.12-bullseye -c "pip install -r requirements.txt && python cv_generator.py"
+	fi
 
 # GENERATE PDF
 

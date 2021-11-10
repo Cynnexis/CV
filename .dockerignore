@@ -1,1 +1,9 @@
 .git/
+.idea/
+.vscode/
+*.log
+*.code-workspace
+*.aux
+*.out
+*.tex
+*.tks
