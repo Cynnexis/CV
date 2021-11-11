@@ -56,8 +56,8 @@
 
 \definecolor{primary-color}{HTML}{46b0c7} % #46b0c7
 \definecolor{primary-text-color}{HTML}{FFFFFF} % #FFFFFF
-\definecolor{h1-color}{HTML}{000000} % #000000
-\definecolor{h2-color}{HTML}{1c2225} % #1c2225
+\definecolor{h1-color}{HTML}{2e343b} % #2e343b
+\definecolor{h2-color}{HTML}{4f5a65} % #4f5a65
 \definecolor{h3-color}{HTML}{938690} % #938690
 \definecolor{link-color}{HTML}{185BC1} % #185BC1
 

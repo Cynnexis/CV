@@ -538,6 +538,7 @@ $RECYCLE.BIN/
 
 GIT.md
 TODO.md
+.pip-requirements
 
 cv.*.tex
 !cv.template.tex
