@@ -72,8 +72,9 @@
 			"date": "Novembre 2020 -- présent",
 			"description": "Ingénieur assistant de recherche.",
 			"details": [
-				"Création d'une architecture Web et d'une application mobile en Flutter pour un sondage interactif,",
-				"Traitement de nuages de points 3D."
+				"Développement d'une architecture Web et d'une application mobile pour un sondage interactif,",
+				"Déploiement de l'architecture avec Docker, Apache, MongoDB, Prometheus et Traefik,",
+				"Traitement d'image avec l'utilisation d'algorithmes avancés."
 			]
 		},
 		{
@@ -84,7 +85,6 @@
 			"details": [
 				"Traitement du langage naturel avec spaCy,",
 				"Développement de réseaux de neurones denses, convolutifs et récursifs (TensorFlow),",
-				"Mise en place d'une base de données MongoDB sur Docker,",
 				"Développement d'une Pipeline CI/CD sur GitLab."
 			]
 		},
@@ -114,7 +114,7 @@
 	"programmingTitle": "Langages de Programmation, Scriptes et Frameworks",
 	"skillItems": [
 		"C, C++, Java/Kotlin, Dart et Python 3.x",
-		"Shell/Bash, HTML/CSS/JS, VueJS, OracleSQL et LaTeX",
+		"Shell/Bash, HTML/CSS/JS, VueJS, NodeJS, OracleSQL et LaTeX",
 		"Bonne maîtrise de TensorFlow et Android Natif",
 		"Excellente maîtrise de Flutter, Docker, git et des systèmes UNIX"
 	]

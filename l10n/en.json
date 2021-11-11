@@ -72,8 +72,9 @@
 			"date": "November 2020 -- present",
 			"description": "Research assistant engineer.",
 			"details": [
-				"Developed a web architecture and a mobile application in Flutter for an interactive survey,",
-				"Point cloud processing in 3D."
+				"Developed a web architecture and a mobile application for an interactive survey,",
+				"Deployed the architecture with Docker, Apache, MongoDB, Prometheus and Traefik,",
+				"Applied image processing using state-of-the-art algorithms."
 			]
 		},
 		{
@@ -84,7 +85,6 @@
 			"details": [
 				"Natural language processing using spaCy,",
 				"Created dense, convolutional and recursive neural networks with TensorFlow,",
-				"Deployed a MongoDB database using Docker,",
 				"Developed a CI/CD pipeline on GitLab."
 			]
 		},
@@ -114,7 +114,7 @@
 	"programmingTitle": "Programming Languages, Scripts and Frameworks",
 	"skillItems": [
 		"C, C++, Java/Kotlin, Dart and Python 3.x",
-		"Shell/Bash, HTML/CSS/JS, VueJS, OracleSQL and LaTeX",
+		"Shell/Bash, HTML/CSS/JS, NodeJS, VueJS, OracleSQL and LaTeX",
 		"Good command of TensorFlow and Android Native",
 		"Excellent command of Flutter, Docker, git and UNIX systems"
 	]
