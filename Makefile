@@ -141,14 +141,19 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 	if [[ -n $$python_exec ]]; then
 		# If an executable is found, check the version
 		python_version_minor=$("$$python_exec" --version | grep -oPe '^Python\s+3\.\K([0-9]+)')
-		if [[ -n $$python_version_minor && "$$python_version_minor" -lt 7 ]]; then
+		if [[ -z $$python_version_minor || "$$python_version_minor" -lt 7 ]]; then
 			# If the version is less than 3.7, assume there is no Python executable
 			python_exec=
 		fi
 	fi
 
 	# If the python executable is found, use it to generate the CV
-	if [[ 1 -eq 0 && -n $$python_exec ]]; then
+	if [[ -n $$python_exec ]]; then
+		$$python_exec --version
+		if [[ ! -f .pip-requirements ]]; then
+			$$python_exec -m pip install --user -r requirements.txt
+			touch .pip-requirements
+		fi
 		python3 cv_generator.py
 	else
 		# Otherwise, use Docker
