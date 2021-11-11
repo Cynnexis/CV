@@ -149,6 +149,10 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 
 	# If the python executable is found, use it to generate the CV
 	if [[ -n $$python_exec ]]; then
+		if [[ ! -f .pip-requirements ]]; then
+			$$python_exec -m pip install --user -r requirements.txt
+			touch .pip-requirements
+		fi
 		python3 cv_generator.py
 	else
 		# Otherwise, use Docker
