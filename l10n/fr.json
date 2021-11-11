@@ -1,0 +1,118 @@
+{
+	"title": "Ingénieur Informatique",
+	"subtitle": "assistant de recherche",
+
+
+	"contactTile": "Contact",
+
+	"addressTitle": "Adresse",
+	"addressContent": "1 Impasse Pommier, 69003 Lyon",
+
+	"phoneNumberTitle": "Numéro de Téléphone",
+	"phoneNumberCompactContent": "+33751648450",
+	"phoneNumberLongContent": "+33 7 51 64 84 50",
+
+	"emailTitle": "Email",
+	"emailRealContent": "Valentin.berger38@gmail.com",
+	"emailDisplayContent": "Valentin.berger38@gmail.com",
+
+	"linkedInTitle": "LinkedIn",
+	"linkedInRealContent": "https://www.linkedin.com/in/valentinberger/",
+	"linkedInDisplayContent": "linkedin.com/in/valentinberger",
+
+	"skypeTitle": "Skype",
+	"skypeContent": "valentin.berger",
+
+	"githubTitle": "GitHub",
+	"githubRealContent": "https://github.com/Cynnexis",
+	"githubDisplayContent": "https://github.com/Cynnexis",
+
+
+	"languagesTile": "Langues",
+	"frenchTile": "Français",
+	"frenchContent": "Langue natale",
+
+	"englishTile": "Anglais",
+	"englishContent": "Bonne maîtrise, Niveau C1 (CEFR),\nTOEIC 955/990",
+
+	"spanishTile": "Espagnol",
+	"spanishContent": "Niveau débutant",
+
+
+	"interestsTitle": "Intérêt",
+	"running": "Course à pied",
+	"writing": "Écriture",
+	"coding": "Programmation",
+
+
+	"diplomas": "Diplômes",
+	"diplomaItems": [
+		{
+			"title": "Master en Intelligence Artificielle",
+			"date": "2019 -- 2020",
+			"description": "Université Lyon 1, double-diplôme avec Polytech Lyon"
+		},
+		{
+			"title": "Diplôme d'Ingénieur à Polytech Lyon en Informatique",
+			"date": "2017 -- 2020",
+			"description": "Polytech Lyon, cycle ingénieur"
+		},
+		{
+			"title": "L1 et L2 Mathématiques-Informatique",
+			"date": "2015 -- 2017",
+			"description": "Université Grenoble Alpes, classe préparatoire avec Polytech Grenoble"
+		}
+	],
+
+	"professionalExperiencesTitle": "Expériences Professionnelles",
+	"professionalExperienceItems": [
+		{
+			"title": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
+			"subtitle": "Institut de neurosciences",
+			"date": "Novembre 2020 -- présent",
+			"description": "Ingénieur assistant de recherche.",
+			"details": [
+				"Création d'une architecture Web et d'une application mobile en Flutter pour un sondage interactif,",
+				"Traitement de nuages de points 3D."
+			]
+		},
+		{
+			"title": "Solutec Lyon",
+			"subtitle": "ESN dans le conseil numérique",
+			"date": "Mars 2020 jusqu'à Juillet 2020 -- 5 mois",
+			"description": "Stage en Recherche & Développement. La mission était de créer un chatbot pour répondre aux éventuelles questions administratives que les employés peuvent avoir. ",
+			"details": [
+				"Traitement du langage naturel avec spaCy,",
+				"Développement de réseaux de neurones denses, convolutifs et récursifs (TensorFlow),",
+				"Mise en place d'une base de données MongoDB sur Docker,",
+				"Développement d'une Pipeline CI/CD sur GitLab."
+			]
+		},
+		{
+			"title": "McMaster University",
+			"subtitle": "McMaster est une université située à Hamilton, au Canada.",
+			"date": "Septembre 2018 jusqu'à Janvier 2019 -- 5 mois",
+			"description": "Stage de recherche en Optimisation Mathématique. La mission était de manipuler une formulation d'un modèle mathématique sur une raffinerie de façon à gérer les arrêts non-anticipés des machines, avec différentes durées d'arrêt.",
+			"details": [
+				"Formulation d'un modèle mathématique multi-périodes,",
+				"Comprendre le fonctionnement d'un optimiseur mathématique,",
+				"Participation à l'écriture d'un article scientifique sur le projet."
+			]
+		},
+		{
+			"title": "STMicroelectronics Crolles",
+			"subtitle": "Fabricant de semi-conducteurs",
+			"date": "Juillet et Août 2017 -- 2 mois",
+			"description": "Intérimaire en tant qu'opérateur en salle blanche",
+			"details": [
+				"Entretien des machines dans la section Lithographie."
+			]
+		}
+	],
+
+	"skillsTitle": "Compétences",
+	"programmingTitle": "Langages de Programmation, Scriptes et Frameworks",
+	"programmingItem1": "C, C++, C#, Java, Kotlin, Dart, Python et LaTeX",
+	"programmingItem2": "HTML5, CCS3, JavaScript, OracleSQL, R, Matlab et GAMS",
+	"programmingItem3": "Bonne maîtrise d'Android Natif, TensorFlow et Flutter"
+}

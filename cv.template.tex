@@ -1,0 +1,95 @@
+% LaTeX engine: XeLaTeX
+% Disable ChkTex Warning #16 (Replace $...$ by \(...\)): chktex-file 46
+\documentclass{resume}
+
+\begin{document}
+
+\header{${{ title }}$\\${{ subtitle }}$}
+
+\sidepanel{
+	\contact{${{ contactTile }}$}{
+		\iconentry{location}{${{ addressTitle }}$}{${{ addressContent }}$}
+
+		\bigjump
+		\iconentry{phone}{${{ phoneNumberTitle }}$}{\link{tel:${{ phoneNumberCompactContent }}$}{${{ phoneNumberLongContent }}$}}
+
+		\bigjump
+		\iconentry{email}{${{ emailTitle }}$}{\link{mailto:${{ emailRealContent }}$}{${{ emailDisplayContent }}$}}
+
+		\bigjump
+		\iconentry{linkedin}{${{ linkedInTitle }}$}{\link{${{ linkedInRealContent }}$}{${{ linkedInDisplayContent }}$}}
+
+		\bigjump
+		\iconentry{skype}{${{ skypeTitle }}$}{${{ skypeContent }}$}
+
+		\bigjump
+		\iconentry{github}{${{ githubTitle }}$}{\link{${{ githubRealContent }}$}{${{ githubDisplayContent }}$}}
+	}
+
+	\languages{${{ languagesTile }}$}{
+		\iconentry{flag-fr}{${{ frenchTile }}$}{${{ frenchContent }}$}
+
+		\bigjump
+		\iconentry{flag-ca}{${{ englishTile }}$}{${{ englishContent }}$}
+
+		\bigjump
+		\iconentry{flag-es}{${{ spanishTile }}$}{${{ spanishContent }}$}
+	}
+
+	\interests{${{ interestsTitle }}$}{
+		\firstwindowicon{running}{\entrydescription{${{ running }}$}}
+
+		\jump
+		\firstwindowicon{write}{\entrydescription{${{ writing }}$}}
+
+		\jump
+		\firstwindowicon{computer}{\entrydescription{${{ coding }}$}}
+	}
+	\null%
+	\vfill%
+}%
+\hfill
+\mainpanel{
+	\displomas{${{ diplomas }}$}{
+		${{ @for item in diplomaItems }}$
+			\entrytitle{${{ item.title }}$}
+			\entrydate{${{ item.date }}$}
+			\entrydescription{${{ item.description }}$}
+		${{ @join }}$
+			\jump{}
+		${{ @endfor }}$
+	}
+
+	\work{${{ professionalExperiencesTitle }}$}{
+		${{ @for item in professionalExperienceItems }}$
+			\entrytitle{${{ item.title }}$}
+			\entrydescription{${{ item.subtitle }}$}
+			\entrydate{${{ item.date }}$}
+			\entrydescription{${{ item.description }}$
+
+				\begin{itemize}
+				${{ @for detail in item.details }}$
+					\item ${{ detail }}$
+				${{ @endfor }}$
+				\end{itemize}
+			}
+		${{ @join }}$
+				\jump{}
+		${{ @endfor }}$
+	}
+
+	\skills{${{ skillsTitle }}$}{
+		\entrytitle{${{ programmingTitle }}$}
+		\entrydescription{
+			\begin{itemize}
+				\item ${{ programmingItem1 }}$
+				\item ${{ programmingItem2 }}$
+				\item ${{ programmingItem3 }}$
+			\end{itemize}
+		}
+	}
+
+	%\cvfootnote{This document has been compiled with {\DejaSans ❤️} by {\fontfamily{lmr}\selectfont\LaTeX{}}}
+}
+
+\end{document}

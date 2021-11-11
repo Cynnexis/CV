@@ -12,10 +12,10 @@ if [[ "$command" == "make" ]]; then
 	if [[ $# -le 1 ]]; then
 		echo "make> No file given. Listing all CV TeX files in current directory."
 		filename=$(ls cv.*.tex)
-		echo "Listing TeX:" $filename
+		echo "Listing TeX: $filename"
 	else
-		filename=${@:2}
-		echo "make> Given filename $filename"
+		filename="${*:2}"
+		echo "make> Given filename: $filename"
 	fi
 fi
 
@@ -26,8 +26,8 @@ if [[ $command == "make" ]]; then
 	LATEX="lualatex -shell-escape -interaction=batchmode -halt-on-error -file-line-error -output-directory ."
 	for f in $filename; do
 		echo "Compiling $f..."
-		$LATEX $f | tee -a build.log pdflatex1.log
-		$LATEX $f | tee -a build.log pdflatex2.log
+		$LATEX "$f" | tee -a build.log pdflatex1.log
+		$LATEX "$f" | tee -a build.log pdflatex2.log
 		# Get the exit code of the command before the pipe operation ($LATEX)
 		exit_code="${PIPESTATUS[0]}"
 	done

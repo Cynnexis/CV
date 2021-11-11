@@ -1,0 +1,118 @@
+{
+	"title": "Engineer in Computer Science",
+	"subtitle": "Research assistant",
+
+
+	"contactTile": "Contact",
+
+	"addressTitle": "Address",
+	"addressContent": "1 Impasse Pommier, 69003 Lyon, FRANCE",
+
+	"phoneNumberTitle": "Phone Number",
+	"phoneNumberCompactContent": "+33751648450",
+	"phoneNumberLongContent": "+33 7 51 64 84 50",
+
+	"emailTitle": "Email",
+	"emailRealContent": "Valentin.berger38@gmail.com",
+	"emailDisplayContent": "Valentin.berger38@gmail.com",
+
+	"linkedInTitle": "LinkedIn",
+	"linkedInRealContent": "https://www.linkedin.com/in/valentinberger/",
+	"linkedInDisplayContent": "linkedin.com/in/valentinberger",
+
+	"skypeTitle": "Skype",
+	"skypeContent": "valentin.berger",
+
+	"githubTitle": "GitHub",
+	"githubRealContent": "https://github.com/Cynnexis",
+	"githubDisplayContent": "https://github.com/Cynnexis",
+
+
+	"languagesTile": "Languages",
+	"frenchTile": "French",
+	"frenchContent": "Native language",
+
+	"englishTile": "English",
+	"englishContent": "Fluent, C1 Level (CEFR),\nTOEIC 955/990",
+
+	"spanishTile": "Spanish",
+	"spanishContent": "Basic command",
+
+
+	"interestsTitle": "Interests",
+	"running": "Running",
+	"writing": "Writing",
+	"coding": "Coding",
+
+
+	"diplomas": "Diplomas",
+	"diplomaItems": [
+		{
+			"title": "Master's Degree in Artificial Intelligence",
+			"date": "2019 -- 2020",
+			"description": "Université Lyon 1, double degree with Computer Engineering curriculum"
+		},
+		{
+			"title": "Computer Science & Engineering Degree at Polytech Lyon",
+			"date": "2017 -- 2020",
+			"description": "Polytech Lyon, in France"
+		},
+		{
+			"title": "First and second year of a Bachelor's Degree in Computer Science and Mathematics",
+			"date": "2015 -- 2017",
+			"description": "Université Grenoble Alpes, two years of preparatory class for Polytech"
+		}
+	],
+
+	"professionalExperiencesTitle": "Professional Experiences",
+	"professionalExperienceItems": [
+		{
+			"title": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
+			"subtitle": "Institute specialized in neurosciences",
+			"date": "November 2020 -- present",
+			"description": "Research assistant engineer.",
+			"details": [
+				"Developed a web architecture and a mobile application in Flutter for an interactive survey,",
+				"Point cloud processing in 3D."
+			]
+		},
+		{
+			"title": "Solutec Lyon",
+			"subtitle": "Digital service company specialized in consulting",
+			"date": "March 2020 to July 2020 -- 5 months",
+			"description": "Research & Development internship. The mission was to build a Chatbot for the Solutec employees to answers their questions about the organization.",
+			"details": [
+				"Natural language processing using spaCy,",
+				"Created dense, convolutional and recursive neural networks with TensorFlow,",
+				"Deployed a MongoDB database using Docker,",
+				"Developed a CI/CD pipeline on GitLab."
+			]
+		},
+		{
+			"title": "McMaster University",
+			"subtitle": "McMaster is a university located in Hamilton, Canada.",
+			"date": "September 2018 to January 2019 -- 5 months",
+			"description": "Research internship in Mathematical Optimization. The goal was to handle the formulation of a mathematical model on an oil refinery in order to manage the uncertainty of shutting down machines for different durations.",
+			"details": [
+				"Wrote a multiperiod model,",
+				"Understand how mathematical optimizers work,",
+				"Contributed to a scientific journal."
+			]
+		},
+		{
+			"title": "STMicroelectronics Crolles",
+			"subtitle": "A manufacturer of semiconductors",
+			"date": "July and August 2017 -- 2 months",
+			"description": "Temporary job as operator in clean-room",
+			"details": [
+				"Maintained machines in the Lithography area."
+			]
+		}
+	],
+
+	"skillsTitle": "Skills",
+	"programmingTitle": "Programming Languages, Scripts and Frameworks",
+	"programmingItem1": "C, C++, C#, Java, Kotlin, Dart, Python and LaTeX",
+	"programmingItem2": "HTML5, CCS3, JavaScript, OracleSQL, R, Matlab and GAMS",
+	"programmingItem3": "Good command of Android Native and TensorFlow and Flutter"
+}
