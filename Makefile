@@ -122,7 +122,7 @@ png: $(ALL_GENERATED_PNG)
 # GENERATE TEX FILES
 
 cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
-	@set -euo pipefail
+	@set -euxo pipefail
 	if [[ "$@" = "cv.template.tex" ]]; then
 		exit 0
 	fi
