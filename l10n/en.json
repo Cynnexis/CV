@@ -112,7 +112,10 @@
 
 	"skillsTitle": "Skills",
 	"programmingTitle": "Programming Languages, Scripts and Frameworks",
-	"programmingItem1": "C, C++, C#, Java, Kotlin, Dart, Python and LaTeX",
-	"programmingItem2": "HTML5, CCS3, JavaScript, OracleSQL, R, Matlab and GAMS",
-	"programmingItem3": "Good command of Android Native and TensorFlow and Flutter"
+	"skillItems": [
+		"C, C++, Java/Kotlin, Dart and Python 3.x",
+		"Shell/Bash, HTML/CSS/JS, VueJS, OracleSQL and LaTeX",
+		"Good command of TensorFlow and Android Native",
+		"Excellent command of Flutter, Docker, git and UNIX systems"
+	]
 }

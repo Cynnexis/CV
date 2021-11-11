@@ -148,7 +148,7 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 	fi
 
 	# If the python executable is found, use it to generate the CV
-	if [[ 1 -eq 0 && -n $$python_exec ]]; then
+	if [[ -n $$python_exec ]]; then
 		python3 cv_generator.py
 	else
 		# Otherwise, use Docker

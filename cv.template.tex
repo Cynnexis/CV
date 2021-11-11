@@ -82,9 +82,9 @@
 		\entrytitle{${{ programmingTitle }}$}
 		\entrydescription{
 			\begin{itemize}
-				\item ${{ programmingItem1 }}$
-				\item ${{ programmingItem2 }}$
-				\item ${{ programmingItem3 }}$
+			${{ @for item in skillItems }}$
+			\item ${{ item }}$
+			${{ @endfor }}$
 			\end{itemize}
 		}
 	}

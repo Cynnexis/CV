@@ -112,7 +112,10 @@
 
 	"skillsTitle": "Compétences",
 	"programmingTitle": "Langages de Programmation, Scriptes et Frameworks",
-	"programmingItem1": "C, C++, C#, Java, Kotlin, Dart, Python et LaTeX",
-	"programmingItem2": "HTML5, CCS3, JavaScript, OracleSQL, R, Matlab et GAMS",
-	"programmingItem3": "Bonne maîtrise d'Android Natif, TensorFlow et Flutter"
+	"skillItems": [
+		"C, C++, Java/Kotlin, Dart et Python 3.x",
+		"Shell/Bash, HTML/CSS/JS, VueJS, OracleSQL et LaTeX",
+		"Bonne maîtrise de TensorFlow et Android Natif",
+		"Excellente maîtrise de Flutter, Docker, git et des systèmes UNIX"
+	]
 }
