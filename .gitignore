@@ -536,5 +536,8 @@ $RECYCLE.BIN/
 # Texmaker workspace file
 *.tks
 
+GIT.md
+TODO.md
+
 cv.*.tex
 !cv.template.tex

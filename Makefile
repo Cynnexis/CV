@@ -9,7 +9,7 @@ ALL_GENERATED_PNG := $(ALL_GENERATED_512_PNG) $(ALL_GENERATED_32_PNG) $(ALL_GENE
 L10N_FILES := $(wildcard l10n/*.json)
 TEX_DEPENDENCIES := resume.cls $(ALL_GENERATED_PNG)
 
-.PHONY: help all clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv
+.PHONY: help all clean clean-build clean-pdf clean-png docker-build docker-rmi docker-kill png cv $(DOCKER_IMAGE) cynnexis/cv-generator
 
 .ONESHELL:
 
@@ -33,13 +33,16 @@ help:
 
 all:
 	@set -euo pipefail
-	# Extract only the languages
-	while IFS= read -r -d '' l10n_file; do
-		language="$$(basename "$$l10n_file" .json)"
-
-		# Call MAKE
-		$(MAKE) "cv.$$language.pdf"
+	# Get the list of all available languages
+	languages=()
+	while IFS= read -rd $$'\0' l10n_file; do
+		languages+=("$$(basename "$$l10n_file" .json)")
 	done < <(find l10n/ -type f -iname '*.json' -print0)
+
+	# Build the resumes
+	for lang in "$${languages[@]}"; do
+		$(MAKE) "cv.$$lang.pdf"
+	done
 
 clean: clean-build clean-pdf clean-png
 
@@ -59,11 +62,16 @@ clean-pdf:
 clean-png:
 	rm -f $(ALL_GENERATED_PNG)
 
-docker-build:
-	docker build -t $(DOCKER_IMAGE) .
+$(DOCKER_IMAGE): Dockerfile
+	docker build -t $@ -f $< .
+
+cynnexis/cv-generator: python.Dockerfile
+	docker build -t $@ -f $< --build-arg "UID=$$(id -u)" --build-arg "GID=$$(id -g)" .
+
+docker-build: $(DOCKER_IMAGE) cynnexis/cv-generator
 
 docker-rmi:
-	docker rmi -f $(DOCKER_IMAGE)
+	docker rmi -f $(DOCKER_IMAGE) cynnexis/cv-generator
 
 docker-kill:
 	docker rm -f $$(docker ps -aq) ; docker rmi -f $$(docker images -f "dangling=true" -q) ; docker system prune -f
@@ -140,20 +148,25 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 	fi
 
 	# If the python executable is found, use it to generate the CV
-	if [[ -n $$python_exec ]]; then
+	if [[ 1 -eq 0 && -n $$python_exec ]]; then
 		python3 cv_generator.py
 	else
 		# Otherwise, use Docker
+		# Build image if not found
+		if ! { docker images '--format={{.Repository}}' | grep -qPe '^cynnexis/cv-generator$$'; } ; then
+			$(MAKE) cynnexis/cv-generator
+		fi
+
 		docker run \
-			-it \
+			-i \
 			--rm \
 			--name="python-generate-$@" \
 			-v "$$(pwd):/cv" \
 			--workdir=/cv \
-			--user "$$(id -u):$$(id -g)"
+			--user "$$(id -u):$$(id -g)" \
 			--entrypoint=bash \
-			python:3.7.12-bullseye \
-				-c "pip install -r requirements.txt && python cv_generator.py"
+			cynnexis/cv-generator \
+				-c "pip install --user -r requirements.txt && python cv_generator.py"
 	fi
 
 # GENERATE PDF
