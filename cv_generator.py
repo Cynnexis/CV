@@ -7,7 +7,6 @@ import re
 import sys
 from typing import Dict, List, Optional, Union
 
-from tqdm import tqdm
 from typeguard import typechecked
 
 DEFAULT_TEMPLATE_FILE: str = "cv.template.tex"
@@ -61,16 +60,13 @@ def main(template_file: str, translation_dir: str) -> None:
 		sys.exit(0)
 
 	# Parse the translation files to JSON and generate the CVs
-	progress: tqdm = tqdm(desc="Generating CVs", total=len(translation_files))
 	for lang, json_file_content in translation_files.items():
 		tex_filename = f"cv.{lang}.tex"
-		progress.set_description(f"Generating {tex_filename}")
+		print(f"Generating {tex_filename}...")
 		json_content: Dict[str, str] = json.loads(json_file_content)
 		tex_file: str = parse_template(template, json_content)
 		with open(tex_filename, "w", encoding='utf-8') as f:
 			f.write(tex_file)
-
-		progress.update()
 
 
 def parse_template(template: str, translation_map: Dict[str, str]) -> str:
