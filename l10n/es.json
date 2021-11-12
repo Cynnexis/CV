@@ -1,0 +1,121 @@
+{
+	"title": "Ingeniero en Informática",
+	"subtitle": "asistente de investigación",
+
+
+	"contactTile": "Contacto",
+
+	"addressTitle": "Dirección",
+	"addressContent": "1 Impasse Pommier, 69003 Lyon, FRANCE",
+
+	"phoneNumberTitle": "Número de Teléfono",
+	"phoneNumberCompactContent": "+33751648450",
+	"phoneNumberLongContent": "+33 7 51 64 84 50",
+
+	"emailTitle": "Email",
+	"emailRealContent": "Valentin.berger38@gmail.com",
+	"emailDisplayContent": "Valentin.berger38@gmail.com",
+
+	"linkedInTitle": "LinkedIn",
+	"linkedInRealContent": "https://www.linkedin.com/in/valentinberger/",
+	"linkedInDisplayContent": "linkedin.com/in/valentinberger",
+
+	"skypeTitle": "Skype",
+	"skypeContent": "valentin.berger",
+
+	"githubTitle": "GitHub",
+	"githubRealContent": "https://github.com/Cynnexis",
+	"githubDisplayContent": "https://github.com/Cynnexis",
+
+
+	"languagesTile": "Idiomas",
+	"frenchTile": "Francés",
+	"frenchContent": "Lengua materna",
+
+	"englishTile": "Inglés",
+	"englishContent": "Fluido, nivel C1 (CEFR),\nTOEIC 955/990",
+
+	"spanishTile": "Español",
+	"spanishContent": "Nivel principiante",
+
+
+	"interestsTitle": "Centros de Interés",
+	"running": "Correr",
+	"writing": "Escribir",
+	"coding": "Programar",
+
+
+	"diplomas": "Diplomas",
+	"diplomaItems": [
+		{
+			"title": "Maestría en Inteligencia Artificial",
+			"date": "2019 -- 2020",
+			"description": "Université Lyon 1, doble diploma con mi curso de ingenieria"
+		},
+		{
+			"title": "Diploma de Ingeniero Informática en Polytech Lyon",
+			"date": "2017 -- 2020",
+			"description": "Polytech Lyon, curso de ingenieria"
+		},
+		{
+			"title": "Primer y segundo año de la diplomatura en Matemáticas e Informática",
+			"date": "2015 -- 2017",
+			"description": "Université Grenoble Alpes, dos años de clase preparatoria para Polytech"
+		}
+	],
+
+	"professionalExperiencesTitle": "Experiencias Profesionales",
+	"professionalExperienceItems": [
+		{
+			"title": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
+			"subtitle": "Instituto especializado en cognición y neurociencias",
+			"date": "Noviembre 2020 -- presente",
+			"description": "Ingeniero asistente de investigación.",
+			"details": [
+				"Desarrollo de una arquitectura web y de una aplicación móvil para una encuesta interactiva,",
+				"Despliegue de la arquitectura con Docker, Apache, MongoDB, Prometheus y Traefik,",
+				"Procesamiento de imágenes con algoritmos avanzados."
+			]
+		},
+		{
+			"title": "Solutec Lyon",
+			"subtitle": "Empresa de servicios digitales especializada en consultoría",
+			"date": "Marzo 2020 a Julio 2020 -- 5 meses",
+			"description": "Prácticas en Investigación y Desarrollo. La misión era crear un chatbot para responder a las preguntas administrativas que pudieran tener los empleados. ",
+			"details": [
+				"Procesamiento del lenguaje natural con spaCy,",
+				"Desarrollo de redes neuronales densas, convolucionales y recursivas con TensorFlow,",
+				"Desarrollo de un pipeline CI/CD para GitLab."
+			]
+		},
+		{
+			"title": "McMaster University",
+			"subtitle": "McMaster es una universidad situada en Hamilton, Canadá.",
+			"date": "Septiembre 2018 a Enero 2019 -- 5 meses",
+			"description": "Prácticas de investigación en Optimización Matemática. La misión consistía en elaborar una formulación de un modelo matemático sobre una refinería para gestionar las paradas imprevistas de las máquinas, con diferentes duraciones de parada.",
+			"details": [
+				"Formulación de un modelo matemático multiperiodo,",
+				"Comprender el funcionamiento de un optimizador matemático,",
+				"Participación en la redacción de un artículo científico sobre el proyecto."
+			]
+		},
+		{
+			"title": "STMicroelectronics Crolles",
+			"subtitle": "Fabricante de semiconductores",
+			"date": "Julio y Agosto 2017 -- 2 meses",
+			"description": "Trabajo temporal como operador de sala blanca",
+			"details": [
+				"Mantenimiento de las máquinas de la sección de Litografía."
+			]
+		}
+	],
+
+	"skillsTitle": "Competencias",
+	"programmingTitle": "Lenguajes de Programación, Scripts y Frameworks",
+	"skillItems": [
+		"C, C++, Java/Kotlin, Dart y Python 3.x",
+		"Shell/Bash, HTML/CSS/JS, VueJS, NodeJS, OracleSQL y LaTeX",
+		"Buen conocimiento de TensorFlow y Android Native",
+		"Excelente conocimiento de Flutter, Docker, git y sistemas UNIX"
+	]
+}

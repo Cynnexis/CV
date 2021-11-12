@@ -39,7 +39,7 @@
 	"spanishContent": "Niveau débutant",
 
 
-	"interestsTitle": "Intérêt",
+	"interestsTitle": "Centres d'Intérêt",
 	"running": "Course à pied",
 	"writing": "Écriture",
 	"coding": "Programmation",
@@ -68,7 +68,7 @@
 	"professionalExperienceItems": [
 		{
 			"title": "CNRS - Institut des Sciences Cognitives Marc Jeannerod",
-			"subtitle": "Institut de neurosciences",
+			"subtitle": "Institut de cognition et de neurosciences",
 			"date": "Novembre 2020 -- présent",
 			"description": "Ingénieur assistant de recherche.",
 			"details": [

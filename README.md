@@ -1,5 +1,7 @@
 # CV
 
+This projects uses Python and LaTeX to generate and build my resumes in English, French and Spanish.
+
 ## Build
 
 The following steps will get you a copy of the project and the PDF files (in all languages).

@@ -52,6 +52,12 @@ jobs:
         with:
           name: cv.fr
           path: artifacts/cv.fr.pdf
+      - name: Upload cv.es.pdf as an artifact
+        id: upload_cv_es_pdf
+        uses: actions/upload-artifact@v1
+        with:
+          name: cv.es
+          path: artifacts/cv.es.pdf
   release:
     runs-on: ubuntu-18.04
     name: Release the PDF files
@@ -107,4 +113,14 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./cv.fr.pdf
           asset_name: cv.fr.pdf
+          asset_content_type: application/pdf
+      - name: Upload release asset cv.es.pdf
+        id: upload_release_asset_cv_es
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv.es.pdf
+          asset_name: cv.es.pdf
           asset_content_type: application/pdf
