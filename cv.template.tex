@@ -10,39 +10,39 @@
 	\contact{${{ contactTile }}$}{
 		\iconentry{location}{${{ addressTitle }}$}{${{ addressContent }}$}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{phone}{${{ phoneNumberTitle }}$}{\link{tel:${{ phoneNumberCompactContent }}$}{${{ phoneNumberLongContent }}$}}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{email}{${{ emailTitle }}$}{\link{mailto:${{ emailRealContent }}$}{${{ emailDisplayContent }}$}}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{linkedin}{${{ linkedInTitle }}$}{\link{${{ linkedInRealContent }}$}{${{ linkedInDisplayContent }}$}}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{skype}{${{ skypeTitle }}$}{${{ skypeContent }}$}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{github}{${{ githubTitle }}$}{\link{${{ githubRealContent }}$}{${{ githubDisplayContent }}$}}
 	}
 
 	\languages{${{ languagesTile }}$}{
 		\iconentry{flag-fr}{${{ frenchTile }}$}{${{ frenchContent }}$}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{flag-ca}{${{ englishTile }}$}{${{ englishContent }}$}
 
-		\bigjump
+		\bigjump{}
 		\iconentry{flag-es}{${{ spanishTile }}$}{${{ spanishContent }}$}
 	}
 
 	\interests{${{ interestsTitle }}$}{
 		\firstwindowicon{running}{\entrydescription{${{ running }}$}}
+		\jump{}
 
-		\jump
 		\firstwindowicon{write}{\entrydescription{${{ writing }}$}}
+		\jump{}
 
-		\jump
 		\firstwindowicon{computer}{\entrydescription{${{ coding }}$}}
 	}
 	\null%
@@ -51,40 +51,44 @@
 \hfill
 \mainpanel{
 	\displomas{${{ diplomas }}$}{
-		${{ @for item in diplomaItems }}$
+		@{{ for item in diplomaItems }}@
 			\entrytitle{${{ item.title }}$}
 			\entrydate{${{ item.date }}$}
 			\entrydescription{${{ item.description }}$}
-		${{ @join }}$
+			@{{ if loop.index < loop.length }}@
 			\jump{}
-		${{ @endfor }}$
+
+			@{{ endif }}@
+		@{{ endfor }}@
 	}
 
 	\work{${{ professionalExperiencesTitle }}$}{
-		${{ @for item in professionalExperienceItems }}$
+		@{{ for item in professionalExperienceItems }}@
 			\entrytitle{${{ item.title }}$}
 			\entrydescription{${{ item.subtitle }}$}
 			\entrydate{${{ item.date }}$}
 			\entrydescription{${{ item.description }}$
 
 				\begin{itemize}
-				${{ @for detail in item.details }}$
+				@{{ for detail in item.details }}@
 					\item ${{ detail }}$
-				${{ @endfor }}$
+				@{{ endfor }}@
 				\end{itemize}
 			}
-		${{ @join }}$
-				\jump{}
-		${{ @endfor }}$
+			@{{ if loop.index + 1 < loop.length }}@
+			\jump{}
+
+			@{{ endif }}@
+		@{{ endfor }}@
 	}
 
 	\skills{${{ skillsTitle }}$}{
 		\entrytitle{${{ programmingTitle }}$}
 		\entrydescription{
 			\begin{itemize}
-			${{ @for item in skillItems }}$
-			\item ${{ item }}$
-			${{ @endfor }}$
+			@{{ for item in skillItems }}@
+				\item ${{ item }}$
+			@{{ endfor }}@
 			\end{itemize}
 		}
 	}
