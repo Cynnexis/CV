@@ -76,6 +76,9 @@ docker-rmi:
 docker-kill:
 	docker rm -f $$(docker ps -aq) ; docker rmi -f $$(docker images -f "dangling=true" -q) ; docker system prune -f
 
+lint:
+	yapf -ir .
+
 # GENERATE PNG OUT OF SVG
 
 images/computer.png: images/computer.svg

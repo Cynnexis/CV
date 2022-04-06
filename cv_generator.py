@@ -136,18 +136,20 @@ def sanitize_for_latex(string: str) -> str:
 if __name__ == "__main__":
 	# Parse the arguments
 	p = argparse.ArgumentParser(
-		prog="CV Generator", description="Generate the LaTeX files from the template and the translation files.")
+		prog="CV Generator",
+		description="Generate the LaTeX files from the template and the translation files.",
+	)
 	p.add_argument(
 		"-t",
 		"--template",
 		default=DEFAULT_TEMPLATE_FILE,
-		help=f"The LaTeX template file used to generate the translated LaTeX files. The file must contains the placeholders in order to work. Default is {DEFAULT_TEMPLATE_FILE}."
+		help=f"The LaTeX template file used to generate the translated LaTeX files. The file must contains the placeholders in order to work. Default is {DEFAULT_TEMPLATE_FILE}.",
 	)
 	p.add_argument(
 		"-d",
 		"--translation-dir",
 		default=DEFAULT_TRANSLATION_DIR,
-		help=f"The directory containing all translation files. This directory must contain JSON files where the base file name is the two-letter languages. Default is {DEFAULT_TRANSLATION_DIR}."
+		help=f"The directory containing all translation files. This directory must contain JSON files where the base file name is the two-letter languages. Default is {DEFAULT_TRANSLATION_DIR}.",
 	)
 	args = p.parse_args()
 
