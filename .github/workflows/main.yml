@@ -3,11 +3,11 @@ name: CV generator
 on:
   push:
     branches:
-      - master
+      - main
       - 'cicd/**'
   pull_request:
     branches:
-      - master
+      - main
       - 'cicd/**'
 
 jobs:
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-18.04
     name: Release the PDF files
     needs: build
-    if: github.event_name == 'pull_request' && github.base_ref == 'master' || contains(github.ref, 'cicd/')
+    if: github.event_name == 'pull_request' && github.base_ref == 'main' || contains(github.ref, 'cicd/')
     steps:
       - name: Download PDF files
         id: download_pdf

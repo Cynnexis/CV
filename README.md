@@ -1,5 +1,7 @@
 # CV
 
+[![CV generator](https://github.com/Cynnexis/CV/actions/workflows/main.yml/badge.svg)](https://github.com/Cynnexis/CV/actions/workflows/main.yml)
+
 This projects uses Python and LaTeX to generate and build my resumes in English, French and Spanish.
 
 ## ⚙ Generation Process
