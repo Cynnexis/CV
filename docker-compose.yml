@@ -1,9 +1,0 @@
-version: '3.7'
-services:
-  cv-latex:
-    container_name: cv-latex
-    build:
-     context: .
-     dockerfile: Dockerfile
-    volumes:
-      - './:/latex'

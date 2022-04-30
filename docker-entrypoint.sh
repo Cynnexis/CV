@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 command=""
 if [[ $# == 0 ]]; then
@@ -8,6 +9,9 @@ else
 	command=$1
 fi
 
+exit_code=0
+
+# Parse command
 if [[ "$command" == "make" ]]; then
 	if [[ $# -le 1 ]]; then
 		echo "make> No file given. Listing all CV TeX files in current directory."
@@ -17,12 +21,7 @@ if [[ "$command" == "make" ]]; then
 		filename="${*:2}"
 		echo "make> Given filename: $filename"
 	fi
-fi
 
-exit_code=0
-
-# Parse command
-if [[ $command == "make" ]]; then
 	LATEX="lualatex -shell-escape -interaction=batchmode -halt-on-error -file-line-error -output-directory ."
 	for f in $filename; do
 		echo "Compiling $f..."
