@@ -1,6 +1,6 @@
 {
 	"title": "Ingénieur Informatique",
-	"subtitle": "spécialisé en Intelligence Artificielle",
+	"subtitle": "",
 
 
 	"contactTile": "Contact",
@@ -36,7 +36,7 @@
 	"englishContent": "Bonne maîtrise, Niveau C1 (CEFR),\nTOEIC 955/990",
 
 	"spanishTile": "Espagnol",
-	"spanishContent": "Niveau débutant",
+	"spanishContent": "Niveau intermédiaire",
 
 
 	"interestsTitle": "Centres d'Intérêt",
@@ -114,8 +114,8 @@
 	"programmingTitle": "Langages de Programmation, Scriptes et Frameworks",
 	"skillItems": [
 		"C, C++, Java/Kotlin, Dart et Python 3.x",
-		"Shell/Bash, HTML/CSS/JS, VueJS, NodeJS, OracleSQL et LaTeX",
+		"Shell/Bash, HTML/CSS/JS, NodeJS, OracleSQL et LaTeX",
 		"Bonne maîtrise de TensorFlow et Android Natif",
-		"Excellente maîtrise de Flutter, Docker, git et des systèmes UNIX"
+		"Excellente maîtrise de Flutter, Docker, git, GitHub Actions, GitLab CI/CD et des systèmes UNIX"
 	]
 }

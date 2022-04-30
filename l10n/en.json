@@ -1,6 +1,6 @@
 {
 	"title": "Engineer in Computer Science",
-	"subtitle": "specialized in Artificial Intelligence",
+	"subtitle": "",
 
 
 	"contactTile": "Contact",
@@ -36,7 +36,7 @@
 	"englishContent": "Fluent, C1 Level (CEFR),\nTOEIC 955/990",
 
 	"spanishTile": "Spanish",
-	"spanishContent": "Basic command",
+	"spanishContent": "Good command",
 
 
 	"interestsTitle": "Interests",
@@ -114,8 +114,8 @@
 	"programmingTitle": "Programming Languages, Scripts and Frameworks",
 	"skillItems": [
 		"C, C++, Java/Kotlin, Dart and Python 3.x",
-		"Shell/Bash, HTML/CSS/JS, NodeJS, VueJS, OracleSQL and LaTeX",
+		"Shell/Bash, HTML/CSS/JS, NodeJS, OracleSQL and LaTeX",
 		"Good command of TensorFlow and Android Native",
-		"Excellent command of Flutter, Docker, git and UNIX systems"
+		"Excellent command of Flutter, Docker, git, GitHub Actions, GitLab CI/CD and UNIX systems"
 	]
 }
