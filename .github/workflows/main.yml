@@ -8,7 +8,6 @@ on:
   pull_request:
     branches:
       - main
-      - 'cicd/**'
 
 jobs:
   build:
@@ -17,18 +16,17 @@ jobs:
     if: github.event_name == 'pull_request' || contains(github.ref, 'cicd/')
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Give permissions
-        id: x_perm
-        run: chmod a+rwx docker-entrypoint.sh
+        run: chmod a+rx docker-entrypoint.sh
+      - name: Pull Docker images
+        run: make pull
       - name: Build the images
         id: build_png
         run: make png
       - name: Build files
         id: build_tex
-        run: |
-          make docker-build
-          make cv
+        run: make cv
       - name: Export PDF files
         run: |
           mkdir artifacts
@@ -58,6 +56,7 @@ jobs:
         with:
           name: cv.es
           path: artifacts/cv.es.pdf
+
   release:
     runs-on: ubuntu-18.04
     name: Release the PDF files
