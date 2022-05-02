@@ -1,8 +1,9 @@
 SHELL := /bin/bash
 DOCKER_LATEX_IMAGE=cynnexis/latex:1.0.1
 DOCKER_PYTHON_IMAGE=python:3.7.12-bullseye
-DOCKER_INKSCAPE := docker run --name="inkscape-generate-png" --rm -v "$$(pwd):/root/svg/" cynnexis/inkscape --export-overwrite
-ALL_GENERATED_512_PNG := images/computer.png images/cv.png images/default_profile.png images/email.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/work.png images/write.png
+DOCKER_INKSCAPE_IMAGE=cynnexis/inkscape
+DOCKER_INKSCAPE := docker run --name="inkscape-generate-png" --rm -v "$$(pwd):/root/svg/" $(DOCKER_INKSCAPE_IMAGE) --export-overwrite
+ALL_GENERATED_512_PNG := images/auto-stories.png images/computer.png images/cv.png images/default_profile.png images/email.png images/explore.png images/flag-ca.png images/flag-es.png images/flag-fr.png images/github.png images/language.png images/lightbulb.png images/linkedin.png images/location.png images/person.png images/phone.png images/poll.png images/profile.png images/running.png images/school.png images/skype.png images/work.png
 ALL_GENERATED_16_PNG := images/cv16.png
 ALL_GENERATED_32_PNG := images/cv32.png
 ALL_GENERATED_48_PNG := images/cv48.png images/flag-ca48.png images/flag-fr48.png
@@ -20,12 +21,14 @@ help:
 	@echo ''
 	@echo "COMMANDS:"
 	@echo ''
-	@echo "  help         - Print this page."
-	@echo "  all          - Generate the resumes in all available languages."
-	@echo "  clean        - Remove all generate files from the project directory."
-	@echo "  png          - Build all the images from the SVG files."
-	@echo "  cv.%.pdf     - Generate the resume in the language specified by %, as a PDF."
-	@echo "  cv.%.docx    - Generate the resume in the language specified by %, as a DOCX file."
+	@echo "  help      - Print this page."
+	@echo "  all       - Generate the resumes in all available languages."
+	@echo "  clean     - Remove all generate files from the project directory."
+	@echo "  open      - Open all generated PDF files using 'xdg-open'."
+	@echo "  pull      - Pull all necessary Docker images."
+	@echo "  png       - Build all the images from the SVG files."
+	@echo "  cv.%.pdf  - Generate the resume in the language specified by %, as a PDF."
+	@echo "  cv.%.docx - Generate the resume in the language specified by %, as a DOCX file."
 	@echo ''
 
 .PHONY: all
@@ -68,12 +71,36 @@ clean-png:
 lint:
 	yapf -ir .
 
+.PHONY: pull
+pull:
+	@set -euo pipefail
+	images=("$(DOCKER_LATEX_IMAGE)" "$(DOCKER_PYTHON_IMAGE)" "$(DOCKER_INKSCAPE_IMAGE)")
+	for image in "$${images[@]}"; do
+		docker pull "$$image"
+	done
+
+.PHONY: open
+open:
+	@set -euo pipefail
+	if ! command -v xdg-open &> /dev/null; then
+		echo 'Cannot open the PDF files: The program xdg-open is not installed.' 1>&2
+		exit 1
+	fi
+
+	while IFS= read -r -d '' file; do
+		echo "Opening \"$$file\"..."
+		xdg-open "$$file" &> /dev/null &
+	done < <(find . -maxdepth 1 -name '*.pdf' -print0)
+	echo 'Done.'
+
 # GENERATE PNG OUT OF SVG
 
+images/auto-stories.png: images/auto-stories.svg
 images/computer.png: images/computer.svg
 images/cv.png: images/cv.svg
 images/default_profile.png: images/default_profile.svg
 images/email.png: images/email.svg
+images/explore.png: images/explore.svg
 images/flag-ca.png: images/flag-ca.svg
 images/flag-es.png: images/flag-es.svg
 images/flag-fr.png: images/flag-fr.svg
@@ -90,7 +117,6 @@ images/running.png: images/running.post.svg
 images/school.png: images/school.svg
 images/skype.png: images/skype.svg
 images/work.png: images/work.svg
-images/write.png: images/write.svg
 
 $(ALL_GENERATED_512_PNG):
 	$(DOCKER_INKSCAPE) -C --export-filename "/root/svg/$@" -w 512 -h 512 "/root/svg/$<"
@@ -165,17 +191,21 @@ cv.%.tex: cv_generator.py cv.template.tex l10n/%.json
 # GENERATE PDF
 
 cv.%.pdf: cv.%.tex $(TEX_DEPENDENCIES)
-	# TODO: DEBUG -e 'TERM=xterm'
+	@set -euo pipefail
+
+	PS4='$$ '
+	set -x
 	docker run \
 		-i \
 		--rm \
 		--name="latex-make-$@" \
-		-e 'TERM=xterm' \
 		-v "$$(pwd):/latex" \
 		--workdir=/latex \
 		--entrypoint=/bin/bash \
 		$(DOCKER_LATEX_IMAGE) \
 			-c "/latex/docker-entrypoint.sh make $<"
+	
+	{ set +x; } 2> /dev/null
 
 .PHONY: cv
 cv: all
