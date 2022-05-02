@@ -1,6 +1,6 @@
 {
 	"title": "Ingeniero en Informática",
-	"subtitle": "especializado en Inteligencia Artificial",
+	"subtitle": "",
 
 
 	"contactTile": "Contacto",
@@ -36,13 +36,14 @@
 	"englishContent": "Fluido, nivel C1 (CEFR),\nTOEIC 955/990",
 
 	"spanishTile": "Español",
-	"spanishContent": "Nivel principiante",
+	"spanishContent": "Nivel intermedio",
 
 
 	"interestsTitle": "Centros de Interés",
 	"running": "Correr",
-	"writing": "Escribir",
-	"coding": "Programar",
+	"readingWriting": "Leer y escribir",
+	"coding": "Programar para proyectos personales",
+	"travel": "Viajes internacionales",
 
 
 	"diplomas": "Diplomas",
@@ -50,12 +51,12 @@
 		{
 			"title": "Maestría en Inteligencia Artificial",
 			"date": "2019 -- 2020",
-			"description": "Université Lyon 1, doble diploma con mi curso de ingenieria"
+			"description": "Université Lyon 1, doble diploma con mi curso de ingeniería"
 		},
 		{
 			"title": "Diploma de Ingeniero Informática en Polytech Lyon",
 			"date": "2017 -- 2020",
-			"description": "Polytech Lyon, curso de ingenieria"
+			"description": "Polytech Lyon, curso de ingeniería"
 		},
 		{
 			"title": "Primer y segundo año de la diplomatura en Matemáticas e Informática",
@@ -81,7 +82,7 @@
 			"title": "Solutec Lyon",
 			"subtitle": "Empresa de servicios digitales especializada en consultoría",
 			"date": "Marzo 2020 a Julio 2020 -- 5 meses",
-			"description": "Prácticas en Investigación y Desarrollo. La misión era crear un chatbot para responder a las preguntas administrativas que pudieran tener los empleados. ",
+			"description": "Prácticas en Investigación y Desarrollo. La misión era crear un chatbot para responder a las preguntas administrativas que pudieran tener los empleados.",
 			"details": [
 				"Procesamiento del lenguaje natural con spaCy,",
 				"Desarrollo de redes neuronales densas, convolucionales y recursivas con TensorFlow,",
@@ -114,8 +115,8 @@
 	"programmingTitle": "Lenguajes de Programación, Scripts y Frameworks",
 	"skillItems": [
 		"C, C++, Java/Kotlin, Dart y Python 3.x",
-		"Shell/Bash, HTML/CSS/JS, VueJS, NodeJS, OracleSQL y LaTeX",
+		"Shell/Bash, HTML/CSS/JS, NodeJS, OracleSQL y LaTeX",
 		"Buen conocimiento de TensorFlow y Android Native",
-		"Excelente conocimiento de Flutter, Docker, git y sistemas UNIX"
+		"Excelente conocimiento de Flutter, Docker, git, GitHub Actions, GitLab CI/CD y sistemas UNIX"
 	]
 }

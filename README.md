@@ -4,6 +4,21 @@
 
 This projects uses Python and LaTeX to generate and build my resumes in English, French and Spanish.
 
+<table align="center">
+  <thead>
+    <tr>
+      <th colspan="3" align="center">Download my CV</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/Cynnexis/CV/releases/latest/download/cv.en.pdf">🇺🇸 CV (English)</a></td>
+      <td align="center"><a href="https://github.com/Cynnexis/CV/releases/latest/download/cv.fr.pdf">🇫🇷 CV (Français)</a></td>
+      <td align="center"><a href="https://github.com/Cynnexis/CV/releases/latest/download/cv.es.pdf">🇪🇸 CV (Español)</a></td>
+    </tr>
+  </tbody>
+</table>
+
 ## ⚙ Generation Process
 
 The resumes are PDF files, one for each languages, that are generated from LaTeX files. The final PDF files are called `cv.<language>.pdf` (like `cv.en.pdf`), and their respective LaTeX files are called `cv.<language>.tex`. Those files are generated using the Python script `cv_generator.py` that interprets the commands in `cv.template.tex`. All strings used in the resumes are taken from the translation files under `l10n/`.
