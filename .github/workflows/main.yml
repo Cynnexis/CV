@@ -15,22 +15,34 @@ jobs:
     name: Build LaTeX files
     if: github.event_name == 'pull_request' || contains(github.ref, 'cicd/')
     steps:
+
       - name: Checkout
         uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.7'
+          cache: pip # caching pip dependencies
+
       - name: Give permissions
         run: chmod a+rx docker-entrypoint.sh
+
       - name: Pull Docker images
         run: make pull
+
       - name: Build the images
         id: build_png
         run: make png
+
       - name: Build files
         id: build_tex
         run: make cv
+
       - name: Export PDF files
         run: |
           mkdir artifacts
           mv *.pdf artifacts/
+
       - name: Upload all PDF files as an artifact
         # See https://help.github.com/en/actions/configuring-and-managing-workflows/persisting-workflow-data-using-artifacts
         id: upload_cv
@@ -38,18 +50,21 @@ jobs:
         with:
           name: cv
           path: artifacts/
+
       - name: Upload cv.en.pdf as an artifact
         id: upload_cv_en_pdf
         uses: actions/upload-artifact@v1
         with:
           name: cv.en
           path: artifacts/cv.en.pdf
+
       - name: Upload cv.fr.pdf as an artifact
         id: upload_cv_fr_pdf
         uses: actions/upload-artifact@v1
         with:
           name: cv.fr
           path: artifacts/cv.fr.pdf
+
       - name: Upload cv.es.pdf as an artifact
         id: upload_cv_es_pdf
         uses: actions/upload-artifact@v1
@@ -68,9 +83,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: cv
+
       - name: Zip PDF files
         id: zip_pdf
         run: zip -j cv.zip *.pdf
+
       - name: Create a release for the PDF files
         id: create_release
         uses: actions/create-release@latest
@@ -82,6 +99,7 @@ jobs:
           body: "Ref: ${{ github.ref }} SHA: ${{ github.sha }}"
           draft: true
           prerelease: false
+
       - name: Upload release asset cv.zip
         # See https://github.com/actions/upload-release-asset
         id: upload_release_asset_cv
@@ -93,6 +111,7 @@ jobs:
           asset_path: ./cv.zip
           asset_name: cv.zip
           asset_content_type: application/zip
+
       - name: Upload release asset cv.en.pdf
         id: upload_release_asset_cv_en
         uses: actions/upload-release-asset@v1
@@ -103,6 +122,7 @@ jobs:
           asset_path: ./cv.en.pdf
           asset_name: cv.en.pdf
           asset_content_type: application/pdf
+
       - name: Upload release asset cv.fr.pdf
         id: upload_release_asset_cv_fr
         uses: actions/upload-release-asset@v1
@@ -113,6 +133,7 @@ jobs:
           asset_path: ./cv.fr.pdf
           asset_name: cv.fr.pdf
           asset_content_type: application/pdf
+
       - name: Upload release asset cv.es.pdf
         id: upload_release_asset_cv_es
         uses: actions/upload-release-asset@v1
