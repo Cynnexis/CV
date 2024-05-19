@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Build LaTeX files
     if: github.event_name == 'pull_request' || contains(github.ref, 'cicd/')
     steps:
@@ -73,7 +73,7 @@ jobs:
           path: artifacts/cv.es.pdf
 
   release:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Release the PDF files
     needs: build
     if: github.event_name == 'pull_request' && github.base_ref == 'main' || contains(github.ref, 'cicd/')
