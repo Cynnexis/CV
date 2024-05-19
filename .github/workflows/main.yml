@@ -19,10 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.7'
-          cache: pip # caching pip dependencies
 
       - name: Give permissions
         run: chmod a+rx docker-entrypoint.sh
